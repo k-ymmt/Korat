@@ -1,0 +1,801 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		024593BD23B598FE0057DE97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024593BC23B598FE0057DE97 /* AppDelegate.swift */; };
+		024593C123B599010057DE97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 024593C023B599010057DE97 /* Assets.xcassets */; };
+		024593C423B599010057DE97 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 024593C323B599010057DE97 /* Preview Assets.xcassets */; };
+		024593C723B599010057DE97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 024593C523B599010057DE97 /* Main.storyboard */; };
+		024593D323B599010057DE97 /* KoratTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024593D223B599010057DE97 /* KoratTests.swift */; };
+		024593DE23B599010057DE97 /* KoratUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024593DD23B599010057DE97 /* KoratUITests.swift */; };
+		024CFFE423B7895A0073C862 /* LoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CFFE323B7895A0073C862 /* LoggerViewController.swift */; };
+		024CFFE623B78ADC0073C862 /* LoggerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFE523B78ADC0073C862 /* LoggerViewController.xib */; };
+		024CFFF523B7B9B30073C862 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CFFF423B7B9B30073C862 /* MainWindowController.swift */; };
+		024CFFF723B7BB5A0073C862 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CFFF623B7BB5A0073C862 /* MainViewController.swift */; };
+		024CFFF923B7BB690073C862 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFF823B7BB690073C862 /* MainViewController.xib */; };
+		024CFFFD23B7C2CA0073C862 /* TitlebarAccessoryView.Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CFFFC23B7C2CA0073C862 /* TitlebarAccessoryView.Controller.swift */; };
+		024CFFFF23B7C2D80073C862 /* TitlebarAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFFE23B7C2D80073C862 /* TitlebarAccessoryViewController.xib */; };
+		025ECB2B23B7EAE800FDBFD1 /* MobileDeviceService.proto in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB2823B7EAE800FDBFD1 /* MobileDeviceService.proto */; };
+		025ECB2C23B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB2923B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift */; };
+		025ECB2D23B7EAE800FDBFD1 /* MobileDeviceService.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB2A23B7EAE800FDBFD1 /* MobileDeviceService.pb.swift */; };
+		025ECB3023B7EB1000FDBFD1 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 025ECB2F23B7EB1000FDBFD1 /* GRPC */; };
+		0297D8DF23C0E53B0091940D /* Protobuf+Initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0297D8DE23C0E53B0091940D /* Protobuf+Initializer.swift */; };
+		029A79BB23C11F94004F6E4C /* PropertyPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BA23C11F94004F6E4C /* PropertyPublished.swift */; };
+		029A79BD23C11FE3004F6E4C /* EventPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BC23C11FE3004F6E4C /* EventPublished.swift */; };
+		02CDED3B23C0718A00803390 /* Log.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED3823C0718A00803390 /* Log.pb.swift */; };
+		02CDED3C23C0718A00803390 /* Log.proto in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED3923C0718A00803390 /* Log.proto */; };
+		02CDED3F23C0758800803390 /* MobileDeviceCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED3E23C0758800803390 /* MobileDeviceCenter.swift */; };
+		02CDED4223C0D87A00803390 /* LoggerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4123C0D87A00803390 /* LoggerRouter.swift */; };
+		02CDED4423C0DBB100803390 /* LoggerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4323C0DBB100803390 /* LoggerPresenter.swift */; };
+		02CDED4623C0DC3200803390 /* LoggerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4523C0DC3200803390 /* LoggerInteractor.swift */; };
+		02EF099523B7D495001C29FD /* SwiftiMobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024CFFE823B795C80073C862 /* SwiftiMobileDevice.framework */; };
+		02EF099623B7D495001C29FD /* SwiftiMobileDevice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 024CFFE823B795C80073C862 /* SwiftiMobileDevice.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		024593CF23B599010057DE97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 024593B123B598FE0057DE97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 024593B823B598FE0057DE97;
+			remoteInfo = Korat;
+		};
+		024593DA23B599010057DE97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 024593B123B598FE0057DE97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 024593B823B598FE0057DE97;
+			remoteInfo = Korat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		02EF099723B7D495001C29FD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				02EF099623B7D495001C29FD /* SwiftiMobileDevice.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		024593B923B598FE0057DE97 /* Korat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Korat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		024593BC23B598FE0057DE97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		024593C023B599010057DE97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		024593C323B599010057DE97 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		024593C623B599010057DE97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		024593C823B599010057DE97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		024593C923B599010057DE97 /* Korat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Korat.entitlements; sourceTree = "<group>"; };
+		024593CE23B599010057DE97 /* KoratTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KoratTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		024593D223B599010057DE97 /* KoratTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoratTests.swift; sourceTree = "<group>"; };
+		024593D423B599010057DE97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		024593D923B599010057DE97 /* KoratUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KoratUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		024593DD23B599010057DE97 /* KoratUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoratUITests.swift; sourceTree = "<group>"; };
+		024593DF23B599010057DE97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		024CFFE323B7895A0073C862 /* LoggerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewController.swift; sourceTree = "<group>"; };
+		024CFFE523B78ADC0073C862 /* LoggerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoggerViewController.xib; sourceTree = "<group>"; };
+		024CFFE823B795C80073C862 /* SwiftiMobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftiMobileDevice.framework; path = ../Carthage/Build/Mac/SwiftiMobileDevice.framework; sourceTree = "<group>"; };
+		024CFFF423B7B9B30073C862 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		024CFFF623B7BB5A0073C862 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		024CFFF823B7BB690073C862 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		024CFFFC23B7C2CA0073C862 /* TitlebarAccessoryView.Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlebarAccessoryView.Controller.swift; sourceTree = "<group>"; };
+		024CFFFE23B7C2D80073C862 /* TitlebarAccessoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitlebarAccessoryViewController.xib; sourceTree = "<group>"; };
+		025ECB2823B7EAE800FDBFD1 /* MobileDeviceService.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; name = MobileDeviceService.proto; path = ../../../Protobuf/MobileDeviceService.proto; sourceTree = "<group>"; };
+		025ECB2923B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileDeviceService.grpc.swift; path = ../../../Protobuf/MobileDeviceService.grpc.swift; sourceTree = "<group>"; };
+		025ECB2A23B7EAE800FDBFD1 /* MobileDeviceService.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileDeviceService.pb.swift; path = ../../../Protobuf/MobileDeviceService.pb.swift; sourceTree = "<group>"; };
+		0276086323BD01AA00043A66 /* KoratServerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratServerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0297D8DE23C0E53B0091940D /* Protobuf+Initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protobuf+Initializer.swift"; sourceTree = "<group>"; };
+		029A79BA23C11F94004F6E4C /* PropertyPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPublished.swift; sourceTree = "<group>"; };
+		029A79BC23C11FE3004F6E4C /* EventPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPublished.swift; sourceTree = "<group>"; };
+		02BB6A3123B7D75D00389F17 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		02CDED3823C0718A00803390 /* Log.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.pb.swift; path = ../../../Protobuf/Log.pb.swift; sourceTree = "<group>"; };
+		02CDED3923C0718A00803390 /* Log.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; name = Log.proto; path = ../../../Protobuf/Log.proto; sourceTree = "<group>"; };
+		02CDED3E23C0758800803390 /* MobileDeviceCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceCenter.swift; sourceTree = "<group>"; };
+		02CDED4123C0D87A00803390 /* LoggerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerRouter.swift; sourceTree = "<group>"; };
+		02CDED4323C0DBB100803390 /* LoggerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerPresenter.swift; sourceTree = "<group>"; };
+		02CDED4523C0DC3200803390 /* LoggerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerInteractor.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		024593B623B598FE0057DE97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				025ECB3023B7EB1000FDBFD1 /* GRPC in Frameworks */,
+				02EF099523B7D495001C29FD /* SwiftiMobileDevice.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		024593CB23B599010057DE97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		024593D623B599010057DE97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		024593B023B598FE0057DE97 = {
+			isa = PBXGroup;
+			children = (
+				024593BB23B598FE0057DE97 /* Korat */,
+				024593D123B599010057DE97 /* KoratTests */,
+				024593DC23B599010057DE97 /* KoratUITests */,
+				024593BA23B598FE0057DE97 /* Products */,
+				024CFFE723B795C80073C862 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		024593BA23B598FE0057DE97 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				024593B923B598FE0057DE97 /* Korat.app */,
+				024593CE23B599010057DE97 /* KoratTests.xctest */,
+				024593D923B599010057DE97 /* KoratUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		024593BB23B598FE0057DE97 /* Korat */ = {
+			isa = PBXGroup;
+			children = (
+				0297D8DD23C0E3CD0091940D /* Entities */,
+				02CDED3D23C0744800803390 /* Logging */,
+				024CFFE223B788DF0073C862 /* Views */,
+				024CFFEF23B796B30073C862 /* Services */,
+				025ECB2723B7EAD200FDBFD1 /* Generated */,
+				024CFFF423B7B9B30073C862 /* MainWindowController.swift */,
+				024593BC23B598FE0057DE97 /* AppDelegate.swift */,
+				029A79BA23C11F94004F6E4C /* PropertyPublished.swift */,
+				029A79BC23C11FE3004F6E4C /* EventPublished.swift */,
+				024593C023B599010057DE97 /* Assets.xcassets */,
+				024593C523B599010057DE97 /* Main.storyboard */,
+				024593C823B599010057DE97 /* Info.plist */,
+				024593C923B599010057DE97 /* Korat.entitlements */,
+				024593C223B599010057DE97 /* Preview Content */,
+			);
+			path = Korat;
+			sourceTree = "<group>";
+		};
+		024593C223B599010057DE97 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				024593C323B599010057DE97 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		024593D123B599010057DE97 /* KoratTests */ = {
+			isa = PBXGroup;
+			children = (
+				024593D223B599010057DE97 /* KoratTests.swift */,
+				024593D423B599010057DE97 /* Info.plist */,
+			);
+			path = KoratTests;
+			sourceTree = "<group>";
+		};
+		024593DC23B599010057DE97 /* KoratUITests */ = {
+			isa = PBXGroup;
+			children = (
+				024593DD23B599010057DE97 /* KoratUITests.swift */,
+				024593DF23B599010057DE97 /* Info.plist */,
+			);
+			path = KoratUITests;
+			sourceTree = "<group>";
+		};
+		024CFFE223B788DF0073C862 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				024CFFF623B7BB5A0073C862 /* MainViewController.swift */,
+				024CFFF823B7BB690073C862 /* MainViewController.xib */,
+				024CFFFC23B7C2CA0073C862 /* TitlebarAccessoryView.Controller.swift */,
+				024CFFFE23B7C2D80073C862 /* TitlebarAccessoryViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		024CFFE723B795C80073C862 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0276086323BD01AA00043A66 /* KoratServerKit.framework */,
+				02BB6A3123B7D75D00389F17 /* NetworkExtension.framework */,
+				024CFFE823B795C80073C862 /* SwiftiMobileDevice.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		024CFFEF23B796B30073C862 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				02CDED3E23C0758800803390 /* MobileDeviceCenter.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		025ECB2723B7EAD200FDBFD1 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				0297D8DE23C0E53B0091940D /* Protobuf+Initializer.swift */,
+				02CDED3823C0718A00803390 /* Log.pb.swift */,
+				02CDED3923C0718A00803390 /* Log.proto */,
+				025ECB2923B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift */,
+				025ECB2A23B7EAE800FDBFD1 /* MobileDeviceService.pb.swift */,
+				025ECB2823B7EAE800FDBFD1 /* MobileDeviceService.proto */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		0297D8DD23C0E3CD0091940D /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		02CDED3D23C0744800803390 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				02CDED4023C0D85A00803390 /* Views */,
+				02CDED4123C0D87A00803390 /* LoggerRouter.swift */,
+				02CDED4323C0DBB100803390 /* LoggerPresenter.swift */,
+				02CDED4523C0DC3200803390 /* LoggerInteractor.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		02CDED4023C0D85A00803390 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				024CFFE323B7895A0073C862 /* LoggerViewController.swift */,
+				024CFFE523B78ADC0073C862 /* LoggerViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		024593B823B598FE0057DE97 /* Korat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 024593E223B599010057DE97 /* Build configuration list for PBXNativeTarget "Korat" */;
+			buildPhases = (
+				024593B523B598FE0057DE97 /* Sources */,
+				024593B623B598FE0057DE97 /* Frameworks */,
+				024593B723B598FE0057DE97 /* Resources */,
+				02EF099723B7D495001C29FD /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Korat;
+			packageProductDependencies = (
+				025ECB2F23B7EB1000FDBFD1 /* GRPC */,
+			);
+			productName = Korat;
+			productReference = 024593B923B598FE0057DE97 /* Korat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		024593CD23B599010057DE97 /* KoratTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 024593E523B599010057DE97 /* Build configuration list for PBXNativeTarget "KoratTests" */;
+			buildPhases = (
+				024593CA23B599010057DE97 /* Sources */,
+				024593CB23B599010057DE97 /* Frameworks */,
+				024593CC23B599010057DE97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				024593D023B599010057DE97 /* PBXTargetDependency */,
+			);
+			name = KoratTests;
+			productName = KoratTests;
+			productReference = 024593CE23B599010057DE97 /* KoratTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		024593D823B599010057DE97 /* KoratUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 024593E823B599010057DE97 /* Build configuration list for PBXNativeTarget "KoratUITests" */;
+			buildPhases = (
+				024593D523B599010057DE97 /* Sources */,
+				024593D623B599010057DE97 /* Frameworks */,
+				024593D723B599010057DE97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				024593DB23B599010057DE97 /* PBXTargetDependency */,
+			);
+			name = KoratUITests;
+			productName = KoratUITests;
+			productReference = 024593D923B599010057DE97 /* KoratUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		024593B123B598FE0057DE97 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = kymmt;
+				TargetAttributes = {
+					024593B823B598FE0057DE97 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					024593CD23B599010057DE97 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 024593B823B598FE0057DE97;
+					};
+					024593D823B599010057DE97 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 024593B823B598FE0057DE97;
+					};
+				};
+			};
+			buildConfigurationList = 024593B423B598FE0057DE97 /* Build configuration list for PBXProject "Korat" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 024593B023B598FE0057DE97;
+			packageReferences = (
+				025ECB2E23B7EB1000FDBFD1 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+			);
+			productRefGroup = 024593BA23B598FE0057DE97 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				024593B823B598FE0057DE97 /* Korat */,
+				024593CD23B599010057DE97 /* KoratTests */,
+				024593D823B599010057DE97 /* KoratUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		024593B723B598FE0057DE97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				024CFFFF23B7C2D80073C862 /* TitlebarAccessoryViewController.xib in Resources */,
+				024CFFE623B78ADC0073C862 /* LoggerViewController.xib in Resources */,
+				024593C723B599010057DE97 /* Main.storyboard in Resources */,
+				024CFFF923B7BB690073C862 /* MainViewController.xib in Resources */,
+				024593C423B599010057DE97 /* Preview Assets.xcassets in Resources */,
+				024593C123B599010057DE97 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		024593CC23B599010057DE97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		024593D723B599010057DE97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		024593B523B598FE0057DE97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				024CFFF723B7BB5A0073C862 /* MainViewController.swift in Sources */,
+				025ECB2D23B7EAE800FDBFD1 /* MobileDeviceService.pb.swift in Sources */,
+				0297D8DF23C0E53B0091940D /* Protobuf+Initializer.swift in Sources */,
+				02CDED4423C0DBB100803390 /* LoggerPresenter.swift in Sources */,
+				02CDED3B23C0718A00803390 /* Log.pb.swift in Sources */,
+				024CFFFD23B7C2CA0073C862 /* TitlebarAccessoryView.Controller.swift in Sources */,
+				024CFFF523B7B9B30073C862 /* MainWindowController.swift in Sources */,
+				029A79BB23C11F94004F6E4C /* PropertyPublished.swift in Sources */,
+				02CDED4623C0DC3200803390 /* LoggerInteractor.swift in Sources */,
+				025ECB2B23B7EAE800FDBFD1 /* MobileDeviceService.proto in Sources */,
+				02CDED4223C0D87A00803390 /* LoggerRouter.swift in Sources */,
+				02CDED3F23C0758800803390 /* MobileDeviceCenter.swift in Sources */,
+				024CFFE423B7895A0073C862 /* LoggerViewController.swift in Sources */,
+				024593BD23B598FE0057DE97 /* AppDelegate.swift in Sources */,
+				029A79BD23C11FE3004F6E4C /* EventPublished.swift in Sources */,
+				025ECB2C23B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift in Sources */,
+				02CDED3C23C0718A00803390 /* Log.proto in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		024593CA23B599010057DE97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				024593D323B599010057DE97 /* KoratTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		024593D523B599010057DE97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				024593DE23B599010057DE97 /* KoratUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		024593D023B599010057DE97 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 024593B823B598FE0057DE97 /* Korat */;
+			targetProxy = 024593CF23B599010057DE97 /* PBXContainerItemProxy */;
+		};
+		024593DB23B599010057DE97 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 024593B823B598FE0057DE97 /* Korat */;
+			targetProxy = 024593DA23B599010057DE97 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		024593C523B599010057DE97 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				024593C623B599010057DE97 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		024593E023B599010057DE97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		024593E123B599010057DE97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		024593E323B599010057DE97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Korat/Korat.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Korat/Preview Content\"";
+				DEVELOPMENT_TEAM = 8HUWJ2ZRK2;
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Korat",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../Carthage/Checkouts/SwiftiMobileDevice/libimobiledevice/include",
+					"$(SRCROOT)/../Carthage/Checkouts/SwiftyLibPlist/libplist/include",
+				);
+				INFOPLIST_FILE = Korat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = app.kymmt.Korat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "macOS app Development";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		024593E423B599010057DE97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Korat/Korat.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Korat/Preview Content\"";
+				DEVELOPMENT_TEAM = 8HUWJ2ZRK2;
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Korat",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../Carthage/Checkouts/SwiftiMobileDevice/libimobiledevice/include",
+					"$(SRCROOT)/../Carthage/Checkouts/SwiftyLibPlist/libplist/include",
+				);
+				INFOPLIST_FILE = Korat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = app.kymmt.Korat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "macOS app Development";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		024593E623B599010057DE97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = KoratTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kymmt.KoratTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Korat.app/Contents/MacOS/Korat";
+			};
+			name = Debug;
+		};
+		024593E723B599010057DE97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = KoratTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = app.kymmt.KoratTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Korat.app/Contents/MacOS/Korat";
+			};
+			name = Release;
+		};
+		024593E923B599010057DE97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = KoratUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.kymmt.KoratUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Korat;
+			};
+			name = Debug;
+		};
+		024593EA23B599010057DE97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = KoratUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.kymmt.KoratUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Korat;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		024593B423B598FE0057DE97 /* Build configuration list for PBXProject "Korat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				024593E023B599010057DE97 /* Debug */,
+				024593E123B599010057DE97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		024593E223B599010057DE97 /* Build configuration list for PBXNativeTarget "Korat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				024593E323B599010057DE97 /* Debug */,
+				024593E423B599010057DE97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		024593E523B599010057DE97 /* Build configuration list for PBXNativeTarget "KoratTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				024593E623B599010057DE97 /* Debug */,
+				024593E723B599010057DE97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		024593E823B599010057DE97 /* Build configuration list for PBXNativeTarget "KoratUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				024593E923B599010057DE97 /* Debug */,
+				024593EA23B599010057DE97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		025ECB2E23B7EB1000FDBFD1 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = "1.0.0-alpha.8";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		025ECB2F23B7EB1000FDBFD1 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 025ECB2E23B7EB1000FDBFD1 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 024593B123B598FE0057DE97 /* Project object */;
+}

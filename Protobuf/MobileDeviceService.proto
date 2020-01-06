@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+service MobileDeviceService {
+  rpc GetDeviceList (DeviceListRequest) returns (DeviceListResponse);
+  rpc SubscribeDeviceEvent (SubscribeDeviceEventRequest) returns (stream SubscribeDeviceEventResponse);
+  rpc UnsubscribeDeviceEvent (UnsubscribeDeviceEventRequest) returns (UnsubscribeDeviceEventResponse);
+  rpc GetDeviceName (DeviceNameRequest)  returns (DeviceNameResponse);
+  rpc Publish (stream PublishRequest) returns (PublishResponse);
+  rpc Subscribe (SubscribeRequest) returns (stream SubscribeResponse);
+}
+
+message DeviceListRequest {
+}
+                           
+message SubscribeDeviceEventRequest {
+}
+
+message UnsubscribeDeviceEventRequest {
+}
+
+message UnsubscribeDeviceEventResponse {
+}
+
+message DeviceNameRequest {
+    string udid = 1;
+}
+
+message DeviceNameResponse {
+    string name = 1;
+}
+
+message SubscribeDeviceEventResponse {
+  enum EventType {
+    ADD = 0;
+    REMOVE = 1;
+    PAIRED = 2;
+  }
+  enum ConnectionType {
+    USBMUXD = 0;
+    NETWORK = 1;
+  }
+
+  EventType type = 1;
+  string udid = 2;
+  ConnectionType connectionType = 3;
+}
+
+message DeviceListResponse {
+  repeated Device devices = 1;
+}
+
+message Device {
+  string udid = 1;
+  string name = 2;
+}
+
+message PublishRequest {
+  string udid = 1;
+  string message = 2;
+}
+
+message PublishResponse {
+  string message = 1;
+}
+
+message SubscribeRequest {
+  string udid = 1;
+}
+
+message SubscribeResponse {
+  bytes message = 1;
+}
