@@ -11,6 +11,6 @@ import KoratServerKit
 
 let server = KoratServer(host: "localhost", port: 6001)
 
-server.start()
+try server.start()
 print("Run Server")
 CFRunLoopRun()

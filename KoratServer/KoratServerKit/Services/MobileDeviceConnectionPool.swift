@@ -11,8 +11,13 @@ import SwiftiMobileDevice
 
 private let defaultPort: UInt = 8555
 
-class MobileDeviceConnectionPool {
-    static let instance: MobileDeviceConnectionPool = .init()
+protocol MobileDeviceConnectionPool {
+    func getOrCreateConnection(udid: String) throws -> MobileDeviceConnection
+    func release(udid: String)
+}
+
+class SwiftiMobileDeviceConnectionPool: MobileDeviceConnectionPool {
+    static let instance: SwiftiMobileDeviceConnectionPool = .init()
     
     private let lock: NSRecursiveLock = NSRecursiveLock()
     private var pool: [String: MobileDeviceConnection] = [:]
@@ -31,7 +36,9 @@ class MobileDeviceConnectionPool {
         
         let device = try SwiftiMobileDevice.Device(udid: udid)
         let c = try device.connect(port: defaultPort)
-        let connection = MobileDeviceConnection(device: device, connection: c)
+        let connection = MobileDeviceConnection(client:
+            InternalNativeMobileDeviceConnection(connection: try c.getFileDescriptor())
+        )
         
         pool[udid] = connection
         DispatchQueue.global().async {

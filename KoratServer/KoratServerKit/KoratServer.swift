@@ -16,25 +16,66 @@ private let receiveLength = UInt32.max
 public class KoratServer {
     let host: String
     let port: Int
-    private var server: EventLoopFuture<Server>?
+    private var server: Server?
+    private var group: EventLoopGroup?
 
     public init(host: String, port: Int) {
         self.host = host
         self.port = port
     }
     
-    public func start() {
-        server = Server.start(configuration: .init(target: .hostAndPort(host, port), eventLoopGroup: MultiThreadedEventLoopGroup.init(numberOfThreads: 1), serviceProviders: [MobileDeviceProvider()]))
+    public func start() throws {
+        let group = MultiThreadedEventLoopGroup.init(numberOfThreads: 1)
+        self.group = group
+        server = try Server.start(configuration: .init(
+            target: .hostAndPort(host, port),
+            eventLoopGroup: group,
+            serviceProviders: [MobileDeviceProvider(
+                center: SwiftiMobileDeviceCenter.default,
+                pool: SwiftiMobileDeviceConnectionPool.instance
+            )]
+        )).wait()
+    }
+    
+    public func close() throws {
+        guard let group = self.group,
+            let server = self.server else {
+                Logger.log("server already closed")
+                return
+        }
+        
+        try server.close().wait()
+        try group.syncShutdownGracefully()
+        
+        self.server = nil
+        self.group = nil
+    }
+    
+    deinit {
+        do {
+            try close()
+        } catch {
+            Logger.error(error)
+        }
     }
 }
 
 class MobileDeviceProvider {
+    private let center: MobileDeviceCenter
+    private let pool: MobileDeviceConnectionPool
+    
+    init(center: MobileDeviceCenter, pool: MobileDeviceConnectionPool) {
+        self.pool = pool
+        self.center = center
+    }
 }
 
 extension MobileDeviceProvider: MobileDeviceServiceProvider {
     func unsubscribeDeviceEvent(request: UnsubscribeDeviceEventRequest, context: StatusOnlyCallContext) -> EventLoopFuture<UnsubscribeDeviceEventResponse> {
-        if let error = MobileDevice.eventUnsubscribe() {
-            print(error)
+        do {
+            try center.unsubscribeEvent()
+        } catch {
+            Logger.error(error)
         }
         
         return context.eventLoop.makeSucceededFuture(.init())
@@ -43,12 +84,12 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
     func getDeviceList(request: DeviceListRequest, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceListResponse> {
         var response = DeviceListResponse()
         
-        response.devices = MobileDeviceCenter.default.getDeviceList().map { Device(udid: $0.udid, name: $0.name) }
+        response.devices = center.getDeviceList().map { Device(udid: $0.udid, name: $0.name) }
         return context.eventLoop.makeSucceededFuture(response)
     }
     
     func subscribeDeviceEvent(request: SubscribeDeviceEventRequest, context: StreamingResponseCallContext<SubscribeDeviceEventResponse>) -> EventLoopFuture<GRPCStatus> {
-        MobileDeviceCenter.default.subscribeEvent { (device) in
+        center.subscribeEvent { (device) in
             guard let udid = device.udid, let type = device.type, let connectionType = device.connectionType else {
                 return
             }
@@ -65,7 +106,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
     
     func getDeviceName(request: DeviceNameRequest, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceNameResponse> {
         do {
-            let name = try MobileDeviceCenter.default.getDeviceName(udid: request.udid) ?? ""
+            let name = try center.getDeviceName(udid: request.udid) ?? ""
             return context.eventLoop.makeSucceededFuture(.init(name: name))
         } catch {
             Logger.log(error.localizedDescription)
@@ -83,7 +124,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
                     return
                 }
                 do {
-                    let connection = try MobileDeviceConnectionPool.instance.getOrCreateConnection(udid: udid)
+                    let connection = try self.pool.getOrCreateConnection(udid: udid)
                     try connection.send(data: data)
                 } catch {
                     Logger.log(error.localizedDescription)
@@ -102,7 +143,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
             return context.eventLoop.makeFailedFuture(GRPCStatus(code: .invalidArgument, message: "udid is required not empty"))
         }
         do {
-            let connection = try MobileDeviceConnectionPool.instance.getOrCreateConnection(udid: udid)
+            let connection = try pool.getOrCreateConnection(udid: udid)
             connection.receive { (data) in
                 Logger.log("received value: \(String(data: data, encoding: .utf8) ?? "nil"))")
                 _ = context.sendResponse(.init(message: data))

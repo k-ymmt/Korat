@@ -13,14 +13,12 @@ import NIO
 private let headerSize: Int64 = 8
 
 class MobileDeviceConnection {
-    var device: SwiftiMobileDevice.Device
     var referenceCount: UInt
     
     private var client: InternalMobileDeviceConnection
     
-    init(device: SwiftiMobileDevice.Device, connection: DeviceConnection) {
-        self.device = device
-        self.client = InternalNativeMobileDeviceConnection(connection: connection)
+    init(client: InternalMobileDeviceConnection) {
+        self.client = client
         self.referenceCount = 1
     }
     
@@ -70,7 +68,6 @@ class MobileDeviceConnection {
     }
     
     deinit {
-        device.free()
         client.close()
     }
 }
@@ -87,28 +84,25 @@ private let bufferSize = 1024
 class InternalNativeMobileDeviceConnection: NSObject, InternalMobileDeviceConnection {
     var receiveCallback: ((Data) -> Void)?
     
-    private var connection: DeviceConnection
-    private var sock: Int32 = -1
+    private var connection: Int32 = -1
     
-    init(connection: DeviceConnection) {
+    init(connection: Int32) {
         self.connection = connection
     }
     
     func start() throws {
-        sock = try self.connection.getFileDescriptor()
-        
-        self.receive(sock: sock)
+        self.receive()
     }
     
-    func receive(sock: Int32) {
+    func receive() {
         while true {
-            guard sock > -1 else {
+            guard connection > -1 else {
                 return
             }
             var buffer = Data()
             var bytes = [CChar](repeating: 0, count: bufferSize)
             while true {
-                let recvBytes = recv(sock, &bytes, bufferSize, 0)
+                let recvBytes = recv(connection, &bytes, bufferSize, 0)
                 guard recvBytes > -1 else {
                     print("recv error: \(String(errorNumber: errno))")
                     return
@@ -135,22 +129,21 @@ class InternalNativeMobileDeviceConnection: NSObject, InternalMobileDeviceConnec
     }
     
     func send(data: Data) throws {
-        guard sock > -1 else {
+        guard connection > -1 else {
             throw NSError.init(domain: NSPOSIXErrorDomain, code: Int(POSIXErrorCode.EINVAL.rawValue))
         }
 
-        guard Darwin.send(sock, [UInt8](data), data.count, 0) > -1 else {
+        guard Darwin.send(connection, [UInt8](data), data.count, 0) > -1 else {
             throw NSError(domain: NSPOSIXErrorDomain, code: Int(errno))
         }
     }
     
     func close() {
-        guard sock > -1 else {
+        guard connection > -1 else {
             return
         }
-        Darwin.close(sock)
-        sock = -1
-        connection.free()
+        Darwin.close(connection)
+        connection = -1
     }
     
     deinit {

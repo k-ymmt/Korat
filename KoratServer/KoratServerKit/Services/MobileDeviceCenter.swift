@@ -35,8 +35,15 @@ struct SwiftiDevice {
     }
 }
 
-final class MobileDeviceCenter {
-    static let `default` = MobileDeviceCenter()
+protocol MobileDeviceCenter {
+    func getDeviceList() -> [SwiftiDevice]
+    func subscribeEvent(body: @escaping (MobileDevice.Event) -> Void)
+    func unsubscribeEvent() throws
+    func getDeviceName(udid: String) throws -> String?
+}
+
+struct SwiftiMobileDeviceCenter: MobileDeviceCenter {
+    static let `default` = SwiftiMobileDeviceCenter()
     
     private init() {
     }
@@ -58,6 +65,12 @@ final class MobileDeviceCenter {
             }
         } catch {
             Logger.error(error)
+        }
+    }
+    
+    func unsubscribeEvent() throws {
+        if let error = SwiftiMobileDevice.MobileDevice.eventUnsubscribe() {
+            throw error
         }
     }
     
