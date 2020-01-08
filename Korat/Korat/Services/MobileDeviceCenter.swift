@@ -8,6 +8,7 @@
 
 import Foundation
 import NIO
+import Combine
 
 protocol Disposable {
     func dispose()
@@ -42,8 +43,8 @@ struct DeviceEvent {
 }
 
 protocol MobileDeviceCenter {
-    func subscribeEvent(callback: @escaping (DeviceEvent) -> Void) -> Disposable
-    func subscribeDeviceMessage(udid: String, callback: @escaping (Data) -> Void)
+    func subscribeEvent(callback: @escaping (Result<DeviceEvent, Error>) -> Void) -> Disposable
+    func subscribeDeviceMessage(udid: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable
 }
 
 class KoratMobileDeviceCenter: MobileDeviceCenter {
@@ -55,6 +56,11 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
     
     private var deviceEvents: [String: (DeviceEvent) -> Void] = [:]
     
+    @EventPublished private var subscribeEventPublisher: AnyPublisher<DeviceEvent, Error>
+    
+    private var subscribeEventCallbacks: CallbackPool<Result<DeviceEvent, Error>>!
+    private var subscribeDeviceMessageCallbacks: [String: CallbackPool<Result<Data, Error>>] = [:]
+    
     init() {
         self.client = MobileDeviceServiceServiceClient(connection: .init(
             configuration: .init(
@@ -62,55 +68,127 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
                 eventLoopGroup: MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount))
             )
         )
-        _ = self.client.subscribeDeviceEvent(.init()) { [weak self] (response) in
-            guard let self = self,
-                !response.udid.isEmpty,
-                let type = DeviceEvent.EventType(response.type),
-                let connectionType = DeviceEvent.ConnectionType(response.connectionType) else {
-                    print("unknown event: \(response)")
-                    return
-            }
-
-            let event = DeviceEvent(
-                udid: response.udid,
-                type: type,
-                connectionType: connectionType
-            )
-            self.syncDispatchQueue.async {
-                for (_, action) in self.deviceEvents {
-                    action(event)
+        
+        subscribeEventCallbacks = CallbackPool<Result<DeviceEvent, Error>> { [weak self] action in
+            let status = self?.client.subscribeDeviceEvent(.init(), handler: { (response) in
+                guard let self = self,
+                    !response.udid.isEmpty,
+                    let type = DeviceEvent.EventType(response.type),
+                    let connectionType = DeviceEvent.ConnectionType(response.connectionType) else {
+                        print("unknown event: \(response)")
+                        return
                 }
+                
+                let event = DeviceEvent(
+                    udid: response.udid,
+                    type: type,
+                    connectionType: connectionType
+                )
+                action(.success(event))
+            })
+            status?.status.whenFailure { (error) in
+                action(.failure(error))
             }
+            return status?.status.eventLoop
         }
     }
     
-    func subscribeEvent(callback: @escaping (DeviceEvent) -> Void) -> Disposable {
-        let uuid = UUID().uuidString
-        syncDispatchQueue.async {
-            self.deviceEvents[uuid] = callback
-        }
+    func subscribeEvent(callback: @escaping (Result<DeviceEvent, Error>) -> Void) -> Disposable {
+        let id = subscribeEventCallbacks.add(callback)
         
         return Dispose { [weak self] in
-            self?.syncDispatchQueue.async {
-                self?.deviceEvents.removeValue(forKey: uuid)
-            }
+            self?.subscribeEventCallbacks.remove(id: id)
         }
     }
     
-    func subscribeDeviceMessage(udid: String, callback: @escaping (Data) -> Void) {
-        _ = client.subscribe(.init(udid: udid)) { (response) in
-            callback(response.message)
-        }.status.always({ (result) in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let status):
-                print(status)
+    func subscribeDeviceMessage(udid: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable {
+        let pool: CallbackPool<Result<Data, Error>>
+        if let cache = subscribeDeviceMessageCallbacks[udid] {
+            pool = cache
+        } else {
+            pool = CallbackPool { [weak self] action in
+                let status = self?.client.subscribe(.init(udid: udid), handler: { (response) in
+                    action(.success(response.message))
+                })
+                status?.status.whenFailure({ (error) in
+                    action(.failure(error))
+                })
+                return status?.status.eventLoop
             }
-        })
+            subscribeDeviceMessageCallbacks[udid] = pool
+        }
+
+        let id = pool.add(callback)
+        return Dispose {
+            pool.remove(id: id)
+        }
     }
     
     deinit {
+    }
+}
+
+class CallbackPool<T> {
+    private var started: Bool = false
+    private let subscribe: (@escaping (T) -> Void) -> EventLoop?
+    private var callbacks: [String: (T) -> Void] = [:]
+    private let lock: NSRecursiveLock = NSRecursiveLock()
+    private var status: EventLoop?
+    
+    init(subscribe: @escaping (_ action: @escaping (T) -> Void) -> EventLoop?) {
+        self.subscribe = subscribe
+    }
+    
+    func close() {
+        lock.lock()
+        guard started else {
+            return
+        }
+        do {
+            try status?.close()
+        } catch {
+            print(error)
+        }
+        status = nil
+        started = false
+        callbacks.removeAll()
+        lock.unlock()
+    }
+    
+    func add(_ callback: @escaping (T) -> Void) -> String {
+        let uuid = UUID().uuidString
+        lock.lock()
+        callbacks[uuid] = callback
+        if callbacks.count == 1 {
+            status = subscribe { [weak self] in
+                self?.invoke(with: $0)
+            }
+            started = true
+        }
+        lock.unlock()
+        return uuid
+    }
+    
+    func remove(id: String) {
+        lock.lock()
+        if callbacks.removeValue(forKey: id) != nil {
+            if callbacks.count == 0 {
+                close()
+            }
+        }
+        lock.unlock()
+    }
+    
+    func invoke(with parameter: T) {
+        lock.lock()
+        for (_, callback) in callbacks {
+            callback(parameter)
+        }
+        lock.unlock()
+    }
+    
+    deinit {
+        close()
     }
 }
 

@@ -26,13 +26,14 @@
 		025ECB3023B7EB1000FDBFD1 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 025ECB2F23B7EB1000FDBFD1 /* GRPC */; };
 		0297D8DF23C0E53B0091940D /* Protobuf+Initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0297D8DE23C0E53B0091940D /* Protobuf+Initializer.swift */; };
 		029A79BB23C11F94004F6E4C /* PropertyPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BA23C11F94004F6E4C /* PropertyPublished.swift */; };
-		029A79BD23C11FE3004F6E4C /* EventPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BC23C11FE3004F6E4C /* EventPublished.swift */; };
+		029A79BD23C11FE3004F6E4C /* ActionPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BC23C11FE3004F6E4C /* ActionPublished.swift */; };
 		02CDED3B23C0718A00803390 /* Log.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED3823C0718A00803390 /* Log.pb.swift */; };
 		02CDED3C23C0718A00803390 /* Log.proto in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED3923C0718A00803390 /* Log.proto */; };
 		02CDED3F23C0758800803390 /* MobileDeviceCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED3E23C0758800803390 /* MobileDeviceCenter.swift */; };
 		02CDED4223C0D87A00803390 /* LoggerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4123C0D87A00803390 /* LoggerRouter.swift */; };
 		02CDED4423C0DBB100803390 /* LoggerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4323C0DBB100803390 /* LoggerPresenter.swift */; };
 		02CDED4623C0DC3200803390 /* LoggerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4523C0DC3200803390 /* LoggerInteractor.swift */; };
+		02E34B8723C597660043258B /* EventPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E34B8623C597660043258B /* EventPublished.swift */; };
 		02EF099523B7D495001C29FD /* SwiftiMobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024CFFE823B795C80073C862 /* SwiftiMobileDevice.framework */; };
 		02EF099623B7D495001C29FD /* SwiftiMobileDevice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 024CFFE823B795C80073C862 /* SwiftiMobileDevice.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -96,7 +97,7 @@
 		0276086323BD01AA00043A66 /* KoratServerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratServerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0297D8DE23C0E53B0091940D /* Protobuf+Initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protobuf+Initializer.swift"; sourceTree = "<group>"; };
 		029A79BA23C11F94004F6E4C /* PropertyPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPublished.swift; sourceTree = "<group>"; };
-		029A79BC23C11FE3004F6E4C /* EventPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPublished.swift; sourceTree = "<group>"; };
+		029A79BC23C11FE3004F6E4C /* ActionPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPublished.swift; sourceTree = "<group>"; };
 		02BB6A3123B7D75D00389F17 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		02CDED3823C0718A00803390 /* Log.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.pb.swift; path = ../../../Protobuf/Log.pb.swift; sourceTree = "<group>"; };
 		02CDED3923C0718A00803390 /* Log.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; name = Log.proto; path = ../../../Protobuf/Log.proto; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 		02CDED4123C0D87A00803390 /* LoggerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerRouter.swift; sourceTree = "<group>"; };
 		02CDED4323C0DBB100803390 /* LoggerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerPresenter.swift; sourceTree = "<group>"; };
 		02CDED4523C0DC3200803390 /* LoggerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerInteractor.swift; sourceTree = "<group>"; };
+		02E34B8623C597660043258B /* EventPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPublished.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +167,8 @@
 				024CFFF423B7B9B30073C862 /* MainWindowController.swift */,
 				024593BC23B598FE0057DE97 /* AppDelegate.swift */,
 				029A79BA23C11F94004F6E4C /* PropertyPublished.swift */,
-				029A79BC23C11FE3004F6E4C /* EventPublished.swift */,
+				029A79BC23C11FE3004F6E4C /* ActionPublished.swift */,
+				02E34B8623C597660043258B /* EventPublished.swift */,
 				024593C023B599010057DE97 /* Assets.xcassets */,
 				024593C523B599010057DE97 /* Main.storyboard */,
 				024593C823B599010057DE97 /* Info.plist */,
@@ -422,10 +425,11 @@
 				02CDED4623C0DC3200803390 /* LoggerInteractor.swift in Sources */,
 				025ECB2B23B7EAE800FDBFD1 /* MobileDeviceService.proto in Sources */,
 				02CDED4223C0D87A00803390 /* LoggerRouter.swift in Sources */,
+				02E34B8723C597660043258B /* EventPublished.swift in Sources */,
 				02CDED3F23C0758800803390 /* MobileDeviceCenter.swift in Sources */,
 				024CFFE423B7895A0073C862 /* LoggerViewController.swift in Sources */,
 				024593BD23B598FE0057DE97 /* AppDelegate.swift in Sources */,
-				029A79BD23C11FE3004F6E4C /* EventPublished.swift in Sources */,
+				029A79BD23C11FE3004F6E4C /* ActionPublished.swift in Sources */,
 				025ECB2C23B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift in Sources */,
 				02CDED3C23C0718A00803390 /* Log.proto in Sources */,
 			);

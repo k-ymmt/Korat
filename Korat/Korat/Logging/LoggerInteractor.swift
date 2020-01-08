@@ -49,37 +49,11 @@ class LoggerInteractor: LoggerInteractable {
         self.udid = udid
         self.deviceCenter = deviceCenter
         print(udid)
-        self.disposable = self.deviceCenter.subscribeEvent { [weak self] (event) in
-            guard let self = self,
-                event.udid == self.udid else {
-                    return
+        deviceCenter.subscribeDeviceMessage(udid: udid) { (message) in
+            switch message {
+            case .success(let data):
+                
             }
-            print(event)
-            switch event.type {
-            case .add:
-                self.deviceCenter.subscribeDeviceMessage(udid: udid) { [weak self] (data) in
-                    guard let self = self else {
-                        return
-                    }
-                    do {
-                        let log = try Log(serializedData: data)
-                        self.logReceivedCallback?(.init(
-                            message: log.message,
-                            date: Date(timeIntervalSince1970: log.time),
-                            level: .init(log.level),
-                            source: .init(file: log.source.file, function: log.source.function, line: log.source.line
-                        )))
-                    } catch {
-                        print(error)
-                    }
-                }
-            case .remove:
-                // TODO
-                break
-            case .paired:
-                break
-            }
-            
         }
     }
     
