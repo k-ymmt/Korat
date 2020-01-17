@@ -9,7 +9,6 @@
 import Cocoa
 import SwiftUI
 import SwiftiMobileDevice
-import MobileDevice
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -30,9 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //                print(task.terminationStatus)
 //            }
         }
-        
-        
-        MobileDevice.debug = true
+
         windowController = MainWindowController()
         windowController.window?.makeKeyAndOrderFront(nil)
     }

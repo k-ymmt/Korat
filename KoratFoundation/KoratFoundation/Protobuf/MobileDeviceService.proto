@@ -68,5 +68,6 @@ message SubscribeRequest {
 }
 
 message SubscribeResponse {
-  bytes message = 1;
+  string id = 1;
+  bytes message = 2;
 }

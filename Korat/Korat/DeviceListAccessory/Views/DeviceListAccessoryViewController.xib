@@ -5,7 +5,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TitlebarAccessoryViewController" customModule="Korat">
+        <customObject id="-2" userLabel="File's Owner" customClass="DeviceListAccessoryViewController" customModule="Korat">
             <connections>
                 <outlet property="deviceListPopUpButton" destination="2La-d5-wBR" id="nyy-YO-XYk"/>
                 <outlet property="view" destination="c22-O7-iKe" id="oqF-vy-IaF"/>

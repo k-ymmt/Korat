@@ -41,7 +41,7 @@ public struct ActionPublisher<Value>: Publisher {
 }
 
 extension ActionPublisher {
-    func bind(to other: EventPublished<Value>) -> Combine.Cancellable {
+    func bind(to other: ActionPublished<Value>) -> Combine.Cancellable {
         self.sink { (value) in other.send(value) }
     }
 }

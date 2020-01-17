@@ -28,7 +28,7 @@ import SwiftProtobuf
 
 
 /// Usage: instantiate MobileDeviceServiceServiceClient, then call methods of this protocol to make API calls.
-internal protocol MobileDeviceServiceService {
+public protocol MobileDeviceServiceService {
   func getDeviceList(_ request: DeviceListRequest, callOptions: CallOptions?) -> UnaryCall<DeviceListRequest, DeviceListResponse>
   func subscribeDeviceEvent(_ request: SubscribeDeviceEventRequest, callOptions: CallOptions?, handler: @escaping (SubscribeDeviceEventResponse) -> Void) -> ServerStreamingCall<SubscribeDeviceEventRequest, SubscribeDeviceEventResponse>
   func unsubscribeDeviceEvent(_ request: UnsubscribeDeviceEventRequest, callOptions: CallOptions?) -> UnaryCall<UnsubscribeDeviceEventRequest, UnsubscribeDeviceEventResponse>
@@ -37,16 +37,16 @@ internal protocol MobileDeviceServiceService {
   func subscribe(_ request: SubscribeRequest, callOptions: CallOptions?, handler: @escaping (SubscribeResponse) -> Void) -> ServerStreamingCall<SubscribeRequest, SubscribeResponse>
 }
 
-internal final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceServiceService {
-  internal let connection: ClientConnection
-  internal var defaultCallOptions: CallOptions
+public final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceServiceService {
+  public let connection: ClientConnection
+  public var defaultCallOptions: CallOptions
 
   /// Creates a client for the MobileDeviceService service.
   ///
   /// - Parameters:
   ///   - connection: `ClientConnection` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
-  internal init(connection: ClientConnection, defaultCallOptions: CallOptions = CallOptions()) {
+  public init(connection: ClientConnection, defaultCallOptions: CallOptions = CallOptions()) {
     self.connection = connection
     self.defaultCallOptions = defaultCallOptions
   }
@@ -57,7 +57,7 @@ internal final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceS
   ///   - request: Request to send to GetDeviceList.
   ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func getDeviceList(_ request: DeviceListRequest, callOptions: CallOptions? = nil) -> UnaryCall<DeviceListRequest, DeviceListResponse> {
+  public func getDeviceList(_ request: DeviceListRequest, callOptions: CallOptions? = nil) -> UnaryCall<DeviceListRequest, DeviceListResponse> {
     return self.makeUnaryCall(path: "/MobileDeviceService/GetDeviceList",
                               request: request,
                               callOptions: callOptions ?? self.defaultCallOptions)
@@ -70,7 +70,7 @@ internal final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceS
   ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
   ///   - handler: A closure called when each response is received from the server.
   /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
-  internal func subscribeDeviceEvent(_ request: SubscribeDeviceEventRequest, callOptions: CallOptions? = nil, handler: @escaping (SubscribeDeviceEventResponse) -> Void) -> ServerStreamingCall<SubscribeDeviceEventRequest, SubscribeDeviceEventResponse> {
+  public func subscribeDeviceEvent(_ request: SubscribeDeviceEventRequest, callOptions: CallOptions? = nil, handler: @escaping (SubscribeDeviceEventResponse) -> Void) -> ServerStreamingCall<SubscribeDeviceEventRequest, SubscribeDeviceEventResponse> {
     return self.makeServerStreamingCall(path: "/MobileDeviceService/SubscribeDeviceEvent",
                                         request: request,
                                         callOptions: callOptions ?? self.defaultCallOptions,
@@ -83,7 +83,7 @@ internal final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceS
   ///   - request: Request to send to UnsubscribeDeviceEvent.
   ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func unsubscribeDeviceEvent(_ request: UnsubscribeDeviceEventRequest, callOptions: CallOptions? = nil) -> UnaryCall<UnsubscribeDeviceEventRequest, UnsubscribeDeviceEventResponse> {
+  public func unsubscribeDeviceEvent(_ request: UnsubscribeDeviceEventRequest, callOptions: CallOptions? = nil) -> UnaryCall<UnsubscribeDeviceEventRequest, UnsubscribeDeviceEventResponse> {
     return self.makeUnaryCall(path: "/MobileDeviceService/UnsubscribeDeviceEvent",
                               request: request,
                               callOptions: callOptions ?? self.defaultCallOptions)
@@ -95,7 +95,7 @@ internal final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceS
   ///   - request: Request to send to GetDeviceName.
   ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func getDeviceName(_ request: DeviceNameRequest, callOptions: CallOptions? = nil) -> UnaryCall<DeviceNameRequest, DeviceNameResponse> {
+  public func getDeviceName(_ request: DeviceNameRequest, callOptions: CallOptions? = nil) -> UnaryCall<DeviceNameRequest, DeviceNameResponse> {
     return self.makeUnaryCall(path: "/MobileDeviceService/GetDeviceName",
                               request: request,
                               callOptions: callOptions ?? self.defaultCallOptions)
@@ -109,7 +109,7 @@ internal final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceS
   /// - Parameters:
   ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
   /// - Returns: A `ClientStreamingCall` with futures for the metadata, status and response.
-  internal func publish(callOptions: CallOptions? = nil) -> ClientStreamingCall<PublishRequest, PublishResponse> {
+  public func publish(callOptions: CallOptions? = nil) -> ClientStreamingCall<PublishRequest, PublishResponse> {
     return self.makeClientStreamingCall(path: "/MobileDeviceService/Publish",
                                         callOptions: callOptions ?? self.defaultCallOptions)
   }
@@ -121,7 +121,7 @@ internal final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceS
   ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
   ///   - handler: A closure called when each response is received from the server.
   /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
-  internal func subscribe(_ request: SubscribeRequest, callOptions: CallOptions? = nil, handler: @escaping (SubscribeResponse) -> Void) -> ServerStreamingCall<SubscribeRequest, SubscribeResponse> {
+  public func subscribe(_ request: SubscribeRequest, callOptions: CallOptions? = nil, handler: @escaping (SubscribeResponse) -> Void) -> ServerStreamingCall<SubscribeRequest, SubscribeResponse> {
     return self.makeServerStreamingCall(path: "/MobileDeviceService/Subscribe",
                                         request: request,
                                         callOptions: callOptions ?? self.defaultCallOptions,
@@ -131,7 +131,7 @@ internal final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceS
 }
 
 /// To build a server, implement a class that conforms to this protocol.
-internal protocol MobileDeviceServiceProvider: CallHandlerProvider {
+public protocol MobileDeviceServiceProvider: CallHandlerProvider {
   func getDeviceList(request: DeviceListRequest, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceListResponse>
   func subscribeDeviceEvent(request: SubscribeDeviceEventRequest, context: StreamingResponseCallContext<SubscribeDeviceEventResponse>) -> EventLoopFuture<GRPCStatus>
   func unsubscribeDeviceEvent(request: UnsubscribeDeviceEventRequest, context: StatusOnlyCallContext) -> EventLoopFuture<UnsubscribeDeviceEventResponse>
@@ -141,11 +141,11 @@ internal protocol MobileDeviceServiceProvider: CallHandlerProvider {
 }
 
 extension MobileDeviceServiceProvider {
-  internal var serviceName: String { return "MobileDeviceService" }
+  public var serviceName: String { return "MobileDeviceService" }
 
   /// Determines, calls and returns the appropriate request handler, depending on the request's method.
   /// Returns nil for methods not handled by this service.
-  internal func handleMethod(_ methodName: String, callHandlerContext: CallHandlerContext) -> GRPCCallHandler? {
+  public func handleMethod(_ methodName: String, callHandlerContext: CallHandlerContext) -> GRPCCallHandler? {
     switch methodName {
     case "GetDeviceList":
       return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in

@@ -10,6 +10,7 @@ import Foundation
 
 extension SubscribeRequest {
     init(udid: String) {
+        
         self.udid = udid
     }
 }

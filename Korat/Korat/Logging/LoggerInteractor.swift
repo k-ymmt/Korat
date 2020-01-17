@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import SwiftProtobuf
+import KoratFoundation
 
 struct LogMessage {
     enum Level {
@@ -49,20 +50,26 @@ class LoggerInteractor: LoggerInteractable {
         self.udid = udid
         self.deviceCenter = deviceCenter
         print(udid)
-        deviceCenter.subscribeDeviceMessage(udid: udid) { (message) in
+        disposable = deviceCenter.subscribeDeviceMessage(udid: udid, id: "app.kymmt.Logger") { [weak self] (message) in
             switch message {
             case .success(let data):
-                
+                guard let data = try? Log(serializedData: data) else {
+                    return
+                }
+                self?.logReceivedCallback?(.init(
+                    message: data.message,
+                    date: Date(timeIntervalSince1970: data.time),
+                    level: LogMessage.Level(data.level),
+                    source: LogMessage.Source(data.source)
+                ))
+            case .failure(let error):
+                print(error)
             }
         }
     }
     
     func receivedLog(callback: @escaping (LogMessage) -> Void) {
         self.logReceivedCallback = callback
-    }
-    
-    deinit {
-        print("\(String(describing: type(of: self))) deinit")
     }
 }
 
@@ -87,5 +94,13 @@ extension LogMessage.Level {
             // FIXME
             self = .trace
         }
+    }
+}
+
+extension LogMessage.Source {
+    init(_ source: Log.Source) {
+        self.file = source.file
+        self.function = source.function
+        self.line = source.line
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import GRPC
 import SwiftiMobileDevice
+import KoratFoundation
 import NIO
 
 private let receiveLength = UInt32.max
@@ -84,7 +85,12 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
     func getDeviceList(request: DeviceListRequest, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceListResponse> {
         var response = DeviceListResponse()
         
-        response.devices = center.getDeviceList().map { Device(udid: $0.udid, name: $0.name) }
+        response.devices = center.getDeviceList().map { device in
+            Device.with {
+                $0.name = device.name ?? ""
+                $0.udid = device.udid
+            }
+        }
         return context.eventLoop.makeSucceededFuture(response)
     }
     
@@ -93,12 +99,11 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
             guard let udid = device.udid, let type = device.type, let connectionType = device.connectionType else {
                 return
             }
-            let response = SubscribeDeviceEventResponse(
-                type: SubscribeDeviceEventResponse.EventType(type: type),
-                udid: udid,
-                connectionType: SubscribeDeviceEventResponse.ConnectionType(type: connectionType)
-            )
-            _ = context.sendResponse(response)
+            _ = context.sendResponse(.with {
+                $0.udid = udid
+                $0.type = SubscribeDeviceEventResponse.EventType(type: type)
+                $0.connectionType = SubscribeDeviceEventResponse.ConnectionType(type: connectionType)
+            })
         }
         return context.statusPromise.futureResult
         
@@ -107,7 +112,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
     func getDeviceName(request: DeviceNameRequest, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceNameResponse> {
         do {
             let name = try center.getDeviceName(udid: request.udid) ?? ""
-            return context.eventLoop.makeSucceededFuture(.init(name: name))
+            return context.eventLoop.makeSucceededFuture(.with { $0.name = name })
         } catch {
             Logger.log(error.localizedDescription)
             return context.eventLoop.makeFailedFuture(error)
@@ -146,7 +151,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
             let connection = try pool.getOrCreateConnection(udid: udid)
             connection.receive { (data) in
                 Logger.log("received value: \(String(data: data, encoding: .utf8) ?? "nil"))")
-                _ = context.sendResponse(.init(message: data))
+                _ = context.sendResponse(.with { $0.message = data })
             }
         } catch {
             Logger.log(error.localizedDescription)

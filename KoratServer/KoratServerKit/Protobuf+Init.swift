@@ -8,31 +8,7 @@
 
 import Foundation
 import SwiftiMobileDevice
-
-extension Device {
-    init(udid: String, name: String?) {
-        self.udid = udid
-        self.name = name ?? ""
-    }
-}
-
-extension SubscribeDeviceEventResponse {
-    init(
-        type: SubscribeDeviceEventResponse.EventType,
-        udid: String,
-        connectionType: SubscribeDeviceEventResponse.ConnectionType
-    ) {
-        self.type = type
-        self.udid = udid
-        self.connectionType = connectionType
-    }
-}
-
-extension DeviceNameResponse {
-    init(name: String) {
-        self.name = name
-    }
-}
+import KoratFoundation
 
 extension SubscribeDeviceEventResponse.EventType {
     init(type: MobileDevice.EventType) {
@@ -55,11 +31,5 @@ extension SubscribeDeviceEventResponse.ConnectionType {
         case .network:
             self = .network
         }
-    }
-}
-
-extension SubscribeResponse {
-    init(message: Data) {
-        self.message = message
     }
 }

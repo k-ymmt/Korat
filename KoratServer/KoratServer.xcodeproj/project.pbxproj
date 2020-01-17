@@ -17,13 +17,12 @@
 		025ECB1123B7E56600FDBFD1 /* KoratServerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025ECAF923B7E55C00FDBFD1 /* KoratServerKit.framework */; };
 		025ECB1223B7E56600FDBFD1 /* KoratServerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 025ECAF923B7E55C00FDBFD1 /* KoratServerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		025ECB1C23B7E5E400FDBFD1 /* MobileDeviceCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB1B23B7E5E400FDBFD1 /* MobileDeviceCenter.swift */; };
-		025ECB2423B7EABF00FDBFD1 /* MobileDeviceService.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB2123B7EABF00FDBFD1 /* MobileDeviceService.grpc.swift */; };
-		025ECB2523B7EABF00FDBFD1 /* MobileDeviceService.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB2223B7EABF00FDBFD1 /* MobileDeviceService.pb.swift */; };
-		025ECB3223B7EB7300FDBFD1 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 025ECB3123B7EB7300FDBFD1 /* GRPC */; };
 		025ECB3423B7EC0F00FDBFD1 /* KoratServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB3323B7EC0F00FDBFD1 /* KoratServer.swift */; };
 		025ECB3D23B8BCD800FDBFD1 /* Protobuf+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB3C23B8BCD800FDBFD1 /* Protobuf+Init.swift */; };
 		0293847223BA261B000C0E0C /* MobileDeviceConnectionPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293847123BA261B000C0E0C /* MobileDeviceConnectionPool.swift */; };
 		0293847623BB5020000C0E0C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293847523BB5020000C0E0C /* Logger.swift */; };
+		02C87FC723CB520600A4DBDC /* KoratFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C87FC623CB520600A4DBDC /* KoratFoundation.framework */; };
+		02C87FC823CB520600A4DBDC /* KoratFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02C87FC623CB520600A4DBDC /* KoratFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +50,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				025AC79223BCA8C200861EC2 /* SwiftiMobileDevice.framework in Embed Frameworks */,
+				02C87FC823CB520600A4DBDC /* KoratFoundation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,13 +89,11 @@
 		025ECB0823B7E55C00FDBFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		025ECB1623B7E58400FDBFD1 /* SwiftiMobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftiMobileDevice.framework; path = ../Carthage/Build/Mac/SwiftiMobileDevice.framework; sourceTree = "<group>"; };
 		025ECB1B23B7E5E400FDBFD1 /* MobileDeviceCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceCenter.swift; sourceTree = "<group>"; };
-		025ECB2123B7EABF00FDBFD1 /* MobileDeviceService.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileDeviceService.grpc.swift; path = ../../../Protobuf/MobileDeviceService.grpc.swift; sourceTree = "<group>"; };
-		025ECB2223B7EABF00FDBFD1 /* MobileDeviceService.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileDeviceService.pb.swift; path = ../../../Protobuf/MobileDeviceService.pb.swift; sourceTree = "<group>"; };
-		025ECB2323B7EABF00FDBFD1 /* MobileDeviceService.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; name = MobileDeviceService.proto; path = ../../../Protobuf/MobileDeviceService.proto; sourceTree = "<group>"; };
 		025ECB3323B7EC0F00FDBFD1 /* KoratServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoratServer.swift; sourceTree = "<group>"; };
 		025ECB3C23B8BCD800FDBFD1 /* Protobuf+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protobuf+Init.swift"; sourceTree = "<group>"; };
 		0293847123BA261B000C0E0C /* MobileDeviceConnectionPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceConnectionPool.swift; sourceTree = "<group>"; };
 		0293847523BB5020000C0E0C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		02C87FC623CB520600A4DBDC /* KoratFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02C87FC723CB520600A4DBDC /* KoratFoundation.framework in Frameworks */,
 				025AC79123BCA8C200861EC2 /* SwiftiMobileDevice.framework in Frameworks */,
-				025ECB3223B7EB7300FDBFD1 /* GRPC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				025ECB3B23B8BC3B00FDBFD1 /* ProtobufExtension */,
-				025ECB2023B7EA9B00FDBFD1 /* Generated */,
 				025ECB1A23B7E5C900FDBFD1 /* Services */,
 				025ECAFB23B7E55C00FDBFD1 /* KoratServerKit.h */,
 				025ECAFC23B7E55C00FDBFD1 /* Info.plist */,
@@ -183,6 +180,7 @@
 		025ECB1023B7E56600FDBFD1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02C87FC623CB520600A4DBDC /* KoratFoundation.framework */,
 				025ECB1623B7E58400FDBFD1 /* SwiftiMobileDevice.framework */,
 			);
 			name = Frameworks;
@@ -196,16 +194,6 @@
 				02492F7623BDDD6B00888B68 /* MobileDeviceConnection.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		025ECB2023B7EA9B00FDBFD1 /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				025ECB2123B7EABF00FDBFD1 /* MobileDeviceService.grpc.swift */,
-				025ECB2223B7EABF00FDBFD1 /* MobileDeviceService.pb.swift */,
-				025ECB2323B7EABF00FDBFD1 /* MobileDeviceService.proto */,
-			);
-			path = Generated;
 			sourceTree = "<group>";
 		};
 		025ECB3B23B8BC3B00FDBFD1 /* ProtobufExtension */ = {
@@ -266,7 +254,6 @@
 			);
 			name = KoratServerKit;
 			packageProductDependencies = (
-				025ECB3123B7EB7300FDBFD1 /* GRPC */,
 			);
 			productName = KoratServerKit;
 			productReference = 025ECAF923B7E55C00FDBFD1 /* KoratServerKit.framework */;
@@ -366,9 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0293847223BA261B000C0E0C /* MobileDeviceConnectionPool.swift in Sources */,
-				025ECB2523B7EABF00FDBFD1 /* MobileDeviceService.pb.swift in Sources */,
 				025ECB3423B7EC0F00FDBFD1 /* KoratServer.swift in Sources */,
-				025ECB2423B7EABF00FDBFD1 /* MobileDeviceService.grpc.swift in Sources */,
 				025ECB3D23B8BCD800FDBFD1 /* Protobuf+Init.swift in Sources */,
 				02492F7723BDDD6B00888B68 /* MobileDeviceConnection.swift in Sources */,
 				025ECB1C23B7E5E400FDBFD1 /* MobileDeviceCenter.swift in Sources */,
@@ -677,14 +662,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		025ECB3123B7EB7300FDBFD1 /* GRPC */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 025ECB1D23B7E71900FDBFD1 /* XCRemoteSwiftPackageReference "grpc-swift" */;
-			productName = GRPC;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 025ECAE223B7E53F00FDBFD1 /* Project object */;
 }

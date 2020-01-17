@@ -11,22 +11,19 @@ import Combine
 
 @propertyWrapper
 public struct PropertyPublished<Value> {
-    private let subject: CurrentValueSubject<Value, Never>
-
     public var wrappedValue: PropertyPublisher<Value>
 
     public var value: Value {
-        get { subject.value }
-        set { subject.send(newValue) }
+        get { wrappedValue.value }
+        set { wrappedValue.send(newValue) }
     }
 
     public init(defaultValue: Value) {
-        self.subject = CurrentValueSubject(defaultValue)
-        wrappedValue = PropertyPublisher(subject: self.subject)
+        wrappedValue = PropertyPublisher(defaultValue: defaultValue)
     }
 
     public func forceNotify() {
-        subject.send(subject.value)
+        wrappedValue.send(value)
     }
 }
 
@@ -39,13 +36,17 @@ public struct PropertyPublisher<Value>: Publisher {
     public var value: Value {
         subject.value
     }
-
-    init(subject: CurrentValueSubject<Value, Never>) {
-        self.subject = subject
+    
+    fileprivate init(defaultValue: Value) {
+        self.subject = CurrentValueSubject(defaultValue)
     }
 
     public func receive<S>(subscriber: S) where S: Subscriber, Failure == S.Failure, Output == S.Input {
         subject.receive(subscriber: subscriber)
+    }
+    
+    fileprivate func send(_ value: Value) {
+        subject.send(value)
     }
 }
 

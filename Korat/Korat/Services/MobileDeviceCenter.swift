@@ -9,6 +9,7 @@
 import Foundation
 import NIO
 import Combine
+import KoratFoundation
 
 protocol Disposable {
     func dispose()
@@ -26,25 +27,17 @@ struct Dispose: Disposable {
     }
 }
 
-struct DeviceEvent {
-    enum EventType {
-        case add
-        case remove
-        case paired
+extension Disposable {
+    func store(in set: inout Set<AnyCancellable>) {
+        AnyCancellable {
+            self.dispose()
+        }.store(in: &set)
     }
-    enum ConnectionType {
-        case usbmuxd
-        case network
-    }
-
-    let udid: String
-    let type: EventType
-    let connectionType: ConnectionType
 }
 
 protocol MobileDeviceCenter {
     func subscribeEvent(callback: @escaping (Result<DeviceEvent, Error>) -> Void) -> Disposable
-    func subscribeDeviceMessage(udid: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable
+    func subscribeDeviceMessage(udid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable
 }
 
 class KoratMobileDeviceCenter: MobileDeviceCenter {
@@ -59,7 +52,7 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
     @EventPublished private var subscribeEventPublisher: AnyPublisher<DeviceEvent, Error>
     
     private var subscribeEventCallbacks: CallbackPool<Result<DeviceEvent, Error>>!
-    private var subscribeDeviceMessageCallbacks: [String: CallbackPool<Result<Data, Error>>] = [:]
+    private var subscribeDeviceMessageCallbacks: [String: CallbackPool<Result<(String, Data), Error>>] = [:]
     
     init() {
         self.client = MobileDeviceServiceServiceClient(connection: .init(
@@ -71,20 +64,31 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
         
         subscribeEventCallbacks = CallbackPool<Result<DeviceEvent, Error>> { [weak self] action in
             let status = self?.client.subscribeDeviceEvent(.init(), handler: { (response) in
+                let udid = response.udid
                 guard let self = self,
-                    !response.udid.isEmpty,
+                    !udid.isEmpty,
                     let type = DeviceEvent.EventType(response.type),
                     let connectionType = DeviceEvent.ConnectionType(response.connectionType) else {
                         print("unknown event: \(response)")
                         return
                 }
                 
-                let event = DeviceEvent(
-                    udid: response.udid,
-                    type: type,
-                    connectionType: connectionType
-                )
-                action(.success(event))
+                guard type == .add else {
+                    let event = DeviceEvent(
+                        device: MobileDevice(name: nil, udid: udid),
+                        type: type,
+                        connectionType: connectionType
+                    )
+                    action(.success(event))
+                    return
+                }
+                self.client.getDeviceName(.with { $0.udid = response.udid }).response.whenSuccess({ (response) in
+                    action(.success(.init(
+                        device: .init(name: response.name, udid: udid),
+                        type: type,
+                        connectionType: connectionType
+                    )))
+                })
             })
             status?.status.whenFailure { (error) in
                 action(.failure(error))
@@ -101,14 +105,14 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
         }
     }
     
-    func subscribeDeviceMessage(udid: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable {
-        let pool: CallbackPool<Result<Data, Error>>
+    func subscribeDeviceMessage(udid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable {
+        let pool: CallbackPool<Result<(String, Data), Error>>
         if let cache = subscribeDeviceMessageCallbacks[udid] {
             pool = cache
         } else {
             pool = CallbackPool { [weak self] action in
-                let status = self?.client.subscribe(.init(udid: udid), handler: { (response) in
-                    action(.success(response.message))
+                let status = self?.client.subscribe(.with { $0.udid = udid }, handler: { (response) in
+                    action(.success((response.id, response.message)))
                 })
                 status?.status.whenFailure({ (error) in
                     action(.failure(error))
@@ -118,9 +122,19 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
             subscribeDeviceMessageCallbacks[udid] = pool
         }
 
-        let id = pool.add(callback)
+        let disposing = pool.add { result in
+            switch result {
+            case .success(let id, let data):
+                guard id == id else {
+                    return
+                }
+                callback(.success(data))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
         return Dispose {
-            pool.remove(id: id)
+            pool.remove(id: disposing)
         }
     }
     

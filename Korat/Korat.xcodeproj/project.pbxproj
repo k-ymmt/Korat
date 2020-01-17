@@ -18,17 +18,18 @@
 		024CFFF523B7B9B30073C862 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CFFF423B7B9B30073C862 /* MainWindowController.swift */; };
 		024CFFF723B7BB5A0073C862 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CFFF623B7BB5A0073C862 /* MainViewController.swift */; };
 		024CFFF923B7BB690073C862 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFF823B7BB690073C862 /* MainViewController.xib */; };
-		024CFFFD23B7C2CA0073C862 /* TitlebarAccessoryView.Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CFFFC23B7C2CA0073C862 /* TitlebarAccessoryView.Controller.swift */; };
-		024CFFFF23B7C2D80073C862 /* TitlebarAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFFE23B7C2D80073C862 /* TitlebarAccessoryViewController.xib */; };
-		025ECB2B23B7EAE800FDBFD1 /* MobileDeviceService.proto in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB2823B7EAE800FDBFD1 /* MobileDeviceService.proto */; };
-		025ECB2C23B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB2923B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift */; };
-		025ECB2D23B7EAE800FDBFD1 /* MobileDeviceService.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB2A23B7EAE800FDBFD1 /* MobileDeviceService.pb.swift */; };
-		025ECB3023B7EB1000FDBFD1 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 025ECB2F23B7EB1000FDBFD1 /* GRPC */; };
-		0297D8DF23C0E53B0091940D /* Protobuf+Initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0297D8DE23C0E53B0091940D /* Protobuf+Initializer.swift */; };
+		024CFFFD23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CFFFC23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift */; };
+		024CFFFF23B7C2D80073C862 /* DeviceListAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFFE23B7C2D80073C862 /* DeviceListAccessoryViewController.xib */; };
 		029A79BB23C11F94004F6E4C /* PropertyPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BA23C11F94004F6E4C /* PropertyPublished.swift */; };
 		029A79BD23C11FE3004F6E4C /* ActionPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BC23C11FE3004F6E4C /* ActionPublished.swift */; };
-		02CDED3B23C0718A00803390 /* Log.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED3823C0718A00803390 /* Log.pb.swift */; };
-		02CDED3C23C0718A00803390 /* Log.proto in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED3923C0718A00803390 /* Log.proto */; };
+		02C87F8023C821DC00A4DBDC /* KoratApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F7F23C821DC00A4DBDC /* KoratApp.swift */; };
+		02C87F8B23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F8A23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift */; };
+		02C87F8D23CA1C3700A4DBDC /* DeviceListAccessoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F8C23CA1C3700A4DBDC /* DeviceListAccessoryPresenter.swift */; };
+		02C87F8F23CA1C4300A4DBDC /* DeviceListAccessoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F8E23CA1C4300A4DBDC /* DeviceListAccessoryRouter.swift */; };
+		02C87F9123CB333200A4DBDC /* MobileDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F9023CB333200A4DBDC /* MobileDevice.swift */; };
+		02C87F9323CB4FE700A4DBDC /* DeviceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F9223CB4FE700A4DBDC /* DeviceEvent.swift */; };
+		02C87FCA23CB520E00A4DBDC /* KoratFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C87FC923CB520E00A4DBDC /* KoratFoundation.framework */; };
+		02C87FCB23CB520E00A4DBDC /* KoratFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02C87FC923CB520E00A4DBDC /* KoratFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02CDED3F23C0758800803390 /* MobileDeviceCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED3E23C0758800803390 /* MobileDeviceCenter.swift */; };
 		02CDED4223C0D87A00803390 /* LoggerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4123C0D87A00803390 /* LoggerRouter.swift */; };
 		02CDED4423C0DBB100803390 /* LoggerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4323C0DBB100803390 /* LoggerPresenter.swift */; };
@@ -63,6 +64,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				02EF099623B7D495001C29FD /* SwiftiMobileDevice.framework in Embed Frameworks */,
+				02C87FCB23CB520E00A4DBDC /* KoratFoundation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,18 +91,19 @@
 		024CFFF423B7B9B30073C862 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		024CFFF623B7BB5A0073C862 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		024CFFF823B7BB690073C862 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		024CFFFC23B7C2CA0073C862 /* TitlebarAccessoryView.Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlebarAccessoryView.Controller.swift; sourceTree = "<group>"; };
-		024CFFFE23B7C2D80073C862 /* TitlebarAccessoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitlebarAccessoryViewController.xib; sourceTree = "<group>"; };
-		025ECB2823B7EAE800FDBFD1 /* MobileDeviceService.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; name = MobileDeviceService.proto; path = ../../../Protobuf/MobileDeviceService.proto; sourceTree = "<group>"; };
-		025ECB2923B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileDeviceService.grpc.swift; path = ../../../Protobuf/MobileDeviceService.grpc.swift; sourceTree = "<group>"; };
-		025ECB2A23B7EAE800FDBFD1 /* MobileDeviceService.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MobileDeviceService.pb.swift; path = ../../../Protobuf/MobileDeviceService.pb.swift; sourceTree = "<group>"; };
+		024CFFFC23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListAccessoryViewController.swift; sourceTree = "<group>"; };
+		024CFFFE23B7C2D80073C862 /* DeviceListAccessoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceListAccessoryViewController.xib; sourceTree = "<group>"; };
 		0276086323BD01AA00043A66 /* KoratServerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratServerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0297D8DE23C0E53B0091940D /* Protobuf+Initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protobuf+Initializer.swift"; sourceTree = "<group>"; };
 		029A79BA23C11F94004F6E4C /* PropertyPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPublished.swift; sourceTree = "<group>"; };
 		029A79BC23C11FE3004F6E4C /* ActionPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPublished.swift; sourceTree = "<group>"; };
 		02BB6A3123B7D75D00389F17 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		02CDED3823C0718A00803390 /* Log.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.pb.swift; path = ../../../Protobuf/Log.pb.swift; sourceTree = "<group>"; };
-		02CDED3923C0718A00803390 /* Log.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; name = Log.proto; path = ../../../Protobuf/Log.proto; sourceTree = "<group>"; };
+		02C87F7F23C821DC00A4DBDC /* KoratApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoratApp.swift; sourceTree = "<group>"; };
+		02C87F8A23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListAccessoryInteractor.swift; sourceTree = "<group>"; };
+		02C87F8C23CA1C3700A4DBDC /* DeviceListAccessoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListAccessoryPresenter.swift; sourceTree = "<group>"; };
+		02C87F8E23CA1C4300A4DBDC /* DeviceListAccessoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListAccessoryRouter.swift; sourceTree = "<group>"; };
+		02C87F9023CB333200A4DBDC /* MobileDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDevice.swift; sourceTree = "<group>"; };
+		02C87F9223CB4FE700A4DBDC /* DeviceEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceEvent.swift; sourceTree = "<group>"; };
+		02C87FC923CB520E00A4DBDC /* KoratFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02CDED3E23C0758800803390 /* MobileDeviceCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceCenter.swift; sourceTree = "<group>"; };
 		02CDED4123C0D87A00803390 /* LoggerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerRouter.swift; sourceTree = "<group>"; };
 		02CDED4323C0DBB100803390 /* LoggerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerPresenter.swift; sourceTree = "<group>"; };
@@ -113,7 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				025ECB3023B7EB1000FDBFD1 /* GRPC in Frameworks */,
+				02C87FCA23CB520E00A4DBDC /* KoratFoundation.framework in Frameworks */,
 				02EF099523B7D495001C29FD /* SwiftiMobileDevice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,9 +164,12 @@
 			children = (
 				0297D8DD23C0E3CD0091940D /* Entities */,
 				02CDED3D23C0744800803390 /* Logging */,
-				024CFFE223B788DF0073C862 /* Views */,
+				024CFFE223B788DF0073C862 /* Main */,
+				0249302D23CF04EF00569041 /* DeviceListAccessory */,
+				02C87F8E23CA1C4300A4DBDC /* DeviceListAccessoryRouter.swift */,
+				02C87F8C23CA1C3700A4DBDC /* DeviceListAccessoryPresenter.swift */,
+				02C87F8A23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift */,
 				024CFFEF23B796B30073C862 /* Services */,
-				025ECB2723B7EAD200FDBFD1 /* Generated */,
 				024CFFF423B7B9B30073C862 /* MainWindowController.swift */,
 				024593BC23B598FE0057DE97 /* AppDelegate.swift */,
 				029A79BA23C11F94004F6E4C /* PropertyPublished.swift */,
@@ -204,20 +210,35 @@
 			path = KoratUITests;
 			sourceTree = "<group>";
 		};
-		024CFFE223B788DF0073C862 /* Views */ = {
+		0249302D23CF04EF00569041 /* DeviceListAccessory */ = {
 			isa = PBXGroup;
 			children = (
-				024CFFF623B7BB5A0073C862 /* MainViewController.swift */,
-				024CFFF823B7BB690073C862 /* MainViewController.xib */,
-				024CFFFC23B7C2CA0073C862 /* TitlebarAccessoryView.Controller.swift */,
-				024CFFFE23B7C2D80073C862 /* TitlebarAccessoryViewController.xib */,
+				0249302E23CF050200569041 /* Views */,
+			);
+			path = DeviceListAccessory;
+			sourceTree = "<group>";
+		};
+		0249302E23CF050200569041 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				024CFFFC23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift */,
+				024CFFFE23B7C2D80073C862 /* DeviceListAccessoryViewController.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		024CFFE223B788DF0073C862 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				02C87F8923CA1C1300A4DBDC /* Views */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		024CFFE723B795C80073C862 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02C87FC923CB520E00A4DBDC /* KoratFoundation.framework */,
 				0276086323BD01AA00043A66 /* KoratServerKit.framework */,
 				02BB6A3123B7D75D00389F17 /* NetworkExtension.framework */,
 				024CFFE823B795C80073C862 /* SwiftiMobileDevice.framework */,
@@ -229,28 +250,27 @@
 			isa = PBXGroup;
 			children = (
 				02CDED3E23C0758800803390 /* MobileDeviceCenter.swift */,
+				02C87F7F23C821DC00A4DBDC /* KoratApp.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		025ECB2723B7EAD200FDBFD1 /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				0297D8DE23C0E53B0091940D /* Protobuf+Initializer.swift */,
-				02CDED3823C0718A00803390 /* Log.pb.swift */,
-				02CDED3923C0718A00803390 /* Log.proto */,
-				025ECB2923B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift */,
-				025ECB2A23B7EAE800FDBFD1 /* MobileDeviceService.pb.swift */,
-				025ECB2823B7EAE800FDBFD1 /* MobileDeviceService.proto */,
-			);
-			path = Generated;
 			sourceTree = "<group>";
 		};
 		0297D8DD23C0E3CD0091940D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				02C87F9023CB333200A4DBDC /* MobileDevice.swift */,
+				02C87F9223CB4FE700A4DBDC /* DeviceEvent.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		02C87F8923CA1C1300A4DBDC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				024CFFF623B7BB5A0073C862 /* MainViewController.swift */,
+				024CFFF823B7BB690073C862 /* MainViewController.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		02CDED3D23C0744800803390 /* Logging */ = {
@@ -291,7 +311,6 @@
 			);
 			name = Korat;
 			packageProductDependencies = (
-				025ECB2F23B7EB1000FDBFD1 /* GRPC */,
 			);
 			productName = Korat;
 			productReference = 024593B923B598FE0057DE97 /* Korat.app */;
@@ -384,7 +403,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				024CFFFF23B7C2D80073C862 /* TitlebarAccessoryViewController.xib in Resources */,
+				024CFFFF23B7C2D80073C862 /* DeviceListAccessoryViewController.xib in Resources */,
 				024CFFE623B78ADC0073C862 /* LoggerViewController.xib in Resources */,
 				024593C723B599010057DE97 /* Main.storyboard in Resources */,
 				024CFFF923B7BB690073C862 /* MainViewController.xib in Resources */,
@@ -415,23 +434,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				024CFFF723B7BB5A0073C862 /* MainViewController.swift in Sources */,
-				025ECB2D23B7EAE800FDBFD1 /* MobileDeviceService.pb.swift in Sources */,
-				0297D8DF23C0E53B0091940D /* Protobuf+Initializer.swift in Sources */,
+				02C87F8B23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift in Sources */,
 				02CDED4423C0DBB100803390 /* LoggerPresenter.swift in Sources */,
-				02CDED3B23C0718A00803390 /* Log.pb.swift in Sources */,
-				024CFFFD23B7C2CA0073C862 /* TitlebarAccessoryView.Controller.swift in Sources */,
+				02C87F8023C821DC00A4DBDC /* KoratApp.swift in Sources */,
+				024CFFFD23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift in Sources */,
 				024CFFF523B7B9B30073C862 /* MainWindowController.swift in Sources */,
+				02C87F8F23CA1C4300A4DBDC /* DeviceListAccessoryRouter.swift in Sources */,
 				029A79BB23C11F94004F6E4C /* PropertyPublished.swift in Sources */,
 				02CDED4623C0DC3200803390 /* LoggerInteractor.swift in Sources */,
-				025ECB2B23B7EAE800FDBFD1 /* MobileDeviceService.proto in Sources */,
 				02CDED4223C0D87A00803390 /* LoggerRouter.swift in Sources */,
 				02E34B8723C597660043258B /* EventPublished.swift in Sources */,
 				02CDED3F23C0758800803390 /* MobileDeviceCenter.swift in Sources */,
 				024CFFE423B7895A0073C862 /* LoggerViewController.swift in Sources */,
 				024593BD23B598FE0057DE97 /* AppDelegate.swift in Sources */,
 				029A79BD23C11FE3004F6E4C /* ActionPublished.swift in Sources */,
-				025ECB2C23B7EAE800FDBFD1 /* MobileDeviceService.grpc.swift in Sources */,
-				02CDED3C23C0718A00803390 /* Log.proto in Sources */,
+				02C87F8D23CA1C3700A4DBDC /* DeviceListAccessoryPresenter.swift in Sources */,
+				02C87F9123CB333200A4DBDC /* MobileDevice.swift in Sources */,
+				02C87F9323CB4FE700A4DBDC /* DeviceEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,14 +811,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		025ECB2F23B7EB1000FDBFD1 /* GRPC */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 025ECB2E23B7EB1000FDBFD1 /* XCRemoteSwiftPackageReference "grpc-swift" */;
-			productName = GRPC;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 024593B123B598FE0057DE97 /* Project object */;
 }

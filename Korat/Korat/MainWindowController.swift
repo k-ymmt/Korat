@@ -10,7 +10,7 @@ import Foundation
 import AppKit
 
 final class MainWindowController: NSWindowController {
-    private let mainVC: MainViewController
+    private let mainVC: NSViewController
     init() {
         let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
@@ -22,7 +22,7 @@ final class MainWindowController: NSWindowController {
         window.toolbar = NSToolbar()
         let v = NSTitlebarAccessoryViewController()
         v.layoutAttribute = .left
-        let titlebarVC = TitlebarAccessoryViewController()
+        let titlebarVC = DeviceListAccessoryRouter.assembleModules()
         v.addChild(titlebarVC)
         v.view = titlebarVC.view
         window.addTitlebarAccessoryViewController(v)

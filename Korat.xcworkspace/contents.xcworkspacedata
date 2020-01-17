@@ -7,4 +7,7 @@
    <FileRef
       location = "group:KoratServer/KoratServer.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:KoratFoundation/KoratFoundation.xcodeproj">
+   </FileRef>
 </Workspace>
