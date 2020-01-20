@@ -528,6 +528,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/Mac";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../Carthage/Checkouts/SwiftyLibPlist/libplist/include",
+					"$(SRCROOT)/../Carthage/Checkouts/SwiftiMobileDevice/libimobiledevice/include",
+				);
 				INFOPLIST_FILE = KoratServerKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -558,6 +562,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/Mac";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../Carthage/Checkouts/SwiftyLibPlist/libplist/include",
+					"$(SRCROOT)/../Carthage/Checkouts/SwiftiMobileDevice/libimobiledevice/include",
+				);
 				INFOPLIST_FILE = KoratServerKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
