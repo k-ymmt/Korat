@@ -50,7 +50,9 @@ final class LoggerViewController: NSViewController {
         
         presenter.messages.sink { [weak self] (messages) in
             self?.messages = messages
-            self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }.store(in: &cancellable)
     }
     
