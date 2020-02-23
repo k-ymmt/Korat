@@ -22,6 +22,9 @@
 		024CFFFF23B7C2D80073C862 /* DeviceListAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFFE23B7C2D80073C862 /* DeviceListAccessoryViewController.xib */; };
 		029A79BB23C11F94004F6E4C /* PropertyPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BA23C11F94004F6E4C /* PropertyPublished.swift */; };
 		029A79BD23C11FE3004F6E4C /* ActionPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BC23C11FE3004F6E4C /* ActionPublished.swift */; };
+		02BA94C0240321AB00EC3C5A /* KoratPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02BA94BF240321AB00EC3C5A /* KoratPlugin */; };
+		02BA94C1240321AB00EC3C5A /* KoratPlugin in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 02BA94BF240321AB00EC3C5A /* KoratPlugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		02BA94CB2403273900EC3C5A /* KoratPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02BA94CA2403273900EC3C5A /* KoratPlugin */; };
 		02C87F8023C821DC00A4DBDC /* KoratApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F7F23C821DC00A4DBDC /* KoratApp.swift */; };
 		02C87F8B23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F8A23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift */; };
 		02C87F8D23CA1C3700A4DBDC /* DeviceListAccessoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F8C23CA1C3700A4DBDC /* DeviceListAccessoryPresenter.swift */; };
@@ -62,6 +65,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				02C87FCB23CB520E00A4DBDC /* KoratFoundation.framework in Embed Frameworks */,
+				02BA94C1240321AB00EC3C5A /* KoratPlugin in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C87FCA23CB520E00A4DBDC /* KoratFoundation.framework in Frameworks */,
+				02BA94C0240321AB00EC3C5A /* KoratPlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +133,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0264F6802402EDBD00173BE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02BA94CB2403273900EC3C5A /* KoratPlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +320,7 @@
 			);
 			name = Korat;
 			packageProductDependencies = (
+				02BA94BF240321AB00EC3C5A /* KoratPlugin */,
 			);
 			productName = Korat;
 			productReference = 024593B923B598FE0057DE97 /* Korat.app */;
@@ -382,6 +396,7 @@
 			mainGroup = 024593B023B598FE0057DE97;
 			packageReferences = (
 				025ECB2E23B7EB1000FDBFD1 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				02BA94BE240321AB00EC3C5A /* XCRemoteSwiftPackageReference "KoratPlugin" */,
 			);
 			productRefGroup = 024593BA23B598FE0057DE97 /* Products */;
 			projectDirPath = "";
@@ -806,7 +821,28 @@
 				minimumVersion = "1.0.0-alpha.8";
 			};
 		};
+		02BA94BE240321AB00EC3C5A /* XCRemoteSwiftPackageReference "KoratPlugin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/k-ymmt/KoratPlugin.git";
+			requirement = {
+				kind = revision;
+				revision = 75b57cb92751caaebb3dd75c1d02e2da13a70b56;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		02BA94BF240321AB00EC3C5A /* KoratPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02BA94BE240321AB00EC3C5A /* XCRemoteSwiftPackageReference "KoratPlugin" */;
+			productName = KoratPlugin;
+		};
+		02BA94CA2403273900EC3C5A /* KoratPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02BA94BE240321AB00EC3C5A /* XCRemoteSwiftPackageReference "KoratPlugin" */;
+			productName = KoratPlugin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 024593B123B598FE0057DE97 /* Project object */;
 }

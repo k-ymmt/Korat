@@ -6,17 +6,8 @@
         "repositoryURL": "https://github.com/grpc/grpc-swift.git",
         "state": {
           "branch": null,
-          "revision": "be70633c91d722496e5fcb225f822edbd5c36a5a",
-          "version": "1.0.0-alpha.9"
-        }
-      },
-      {
-        "package": "KoratPlugin",
-        "repositoryURL": "https://github.com/k-ymmt/KoratPlugin.git",
-        "state": {
-          "branch": null,
-          "revision": "75b57cb92751caaebb3dd75c1d02e2da13a70b56",
-          "version": null
+          "revision": "58762bae04f54978e09032306225ddffc9c0fc5a",
+          "version": "1.0.0-alpha.8"
         }
       },
       {
