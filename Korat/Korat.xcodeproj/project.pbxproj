@@ -35,8 +35,6 @@
 		02CDED4423C0DBB100803390 /* LoggerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4323C0DBB100803390 /* LoggerPresenter.swift */; };
 		02CDED4623C0DC3200803390 /* LoggerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4523C0DC3200803390 /* LoggerInteractor.swift */; };
 		02E34B8723C597660043258B /* EventPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E34B8623C597660043258B /* EventPublished.swift */; };
-		02EF099523B7D495001C29FD /* SwiftiMobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024CFFE823B795C80073C862 /* SwiftiMobileDevice.framework */; };
-		02EF099623B7D495001C29FD /* SwiftiMobileDevice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 024CFFE823B795C80073C862 /* SwiftiMobileDevice.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +61,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				02EF099623B7D495001C29FD /* SwiftiMobileDevice.framework in Embed Frameworks */,
 				02C87FCB23CB520E00A4DBDC /* KoratFoundation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -117,7 +114,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C87FCA23CB520E00A4DBDC /* KoratFoundation.framework in Frameworks */,
-				02EF099523B7D495001C29FD /* SwiftiMobileDevice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
