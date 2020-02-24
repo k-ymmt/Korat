@@ -21,6 +21,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2020 kymmt. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string></string>
+	<string>Logger.KoratLogger</string>
 </dict>
 </plist>
