@@ -35,7 +35,7 @@
 		02CDED4623C0DC3200803390 /* LoggerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CDED4523C0DC3200803390 /* LoggerInteractor.swift */; };
 		02D0D95B24032D2400FD83BC /* KoratFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C87FC923CB520E00A4DBDC /* KoratFoundation.framework */; };
 		02D0D95C24032D2400FD83BC /* KoratFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02C87FC923CB520E00A4DBDC /* KoratFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		02DAA48B2402EF660002142C /* Logger.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0264F6832402EDBD00173BE0 /* Logger.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		02DAA48B2402EF660002142C /* Logger.plugin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0264F6832402EDBD00173BE0 /* Logger.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02DAA4A72402F3800002142C /* KoratLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DAA4A62402F3800002142C /* KoratLogger.swift */; };
 		02E34B8723C597660043258B /* EventPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E34B8623C597660043258B /* EventPublished.swift */; };
 /* End PBXBuildFile section */
@@ -64,7 +64,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				02DAA48B2402EF660002142C /* Logger.bundle in CopyFiles */,
+				02DAA48B2402EF660002142C /* Logger.plugin in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,7 @@
 		024CFFF823B7BB690073C862 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		024CFFFC23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListAccessoryViewController.swift; sourceTree = "<group>"; };
 		024CFFFE23B7C2D80073C862 /* DeviceListAccessoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceListAccessoryViewController.xib; sourceTree = "<group>"; };
-		0264F6832402EDBD00173BE0 /* Logger.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Logger.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0264F6832402EDBD00173BE0 /* Logger.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Logger.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		0264F6852402EDBD00173BE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0276086323BD01AA00043A66 /* KoratServerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratServerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		029A79BA23C11F94004F6E4C /* PropertyPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPublished.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 				024593B923B598FE0057DE97 /* Korat.app */,
 				024593CE23B599010057DE97 /* KoratTests.xctest */,
 				024593D923B599010057DE97 /* KoratUITests.xctest */,
-				0264F6832402EDBD00173BE0 /* Logger.bundle */,
+				0264F6832402EDBD00173BE0 /* Logger.plugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -410,7 +410,7 @@
 				02BA94CA2403273900EC3C5A /* KoratPlugin */,
 			);
 			productName = Logger;
-			productReference = 0264F6832402EDBD00173BE0 /* Logger.bundle */;
+			productReference = 0264F6832402EDBD00173BE0 /* Logger.plugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -862,7 +862,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Plugins/Logger/Logger-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				WRAPPER_EXTENSION = bundle;
+				WRAPPER_EXTENSION = plugin;
 			};
 			name = Debug;
 		};
@@ -884,7 +884,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Plugins/Logger/Logger-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				WRAPPER_EXTENSION = bundle;
+				WRAPPER_EXTENSION = plugin;
 			};
 			name = Release;
 		};
