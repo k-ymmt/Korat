@@ -22,6 +22,7 @@
 		024CFFFF23B7C2D80073C862 /* DeviceListAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFFE23B7C2D80073C862 /* DeviceListAccessoryViewController.xib */; };
 		029A79BB23C11F94004F6E4C /* PropertyPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BA23C11F94004F6E4C /* PropertyPublished.swift */; };
 		029A79BD23C11FE3004F6E4C /* ActionPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BC23C11FE3004F6E4C /* ActionPublished.swift */; };
+		02BA94B92403150100EC3C5A /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA94B82403150100EC3C5A /* PluginManager.swift */; };
 		02BA94C0240321AB00EC3C5A /* KoratPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02BA94BF240321AB00EC3C5A /* KoratPlugin */; };
 		02BA94C1240321AB00EC3C5A /* KoratPlugin in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 02BA94BF240321AB00EC3C5A /* KoratPlugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		02BA94CB2403273900EC3C5A /* KoratPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02BA94CA2403273900EC3C5A /* KoratPlugin */; };
@@ -109,6 +110,7 @@
 		0276086323BD01AA00043A66 /* KoratServerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratServerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		029A79BA23C11F94004F6E4C /* PropertyPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPublished.swift; sourceTree = "<group>"; };
 		029A79BC23C11FE3004F6E4C /* ActionPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPublished.swift; sourceTree = "<group>"; };
+		02BA94B82403150100EC3C5A /* PluginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginManager.swift; sourceTree = "<group>"; };
 		02BB6A3123B7D75D00389F17 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		02C87F7F23C821DC00A4DBDC /* KoratApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoratApp.swift; sourceTree = "<group>"; };
 		02C87F8A23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListAccessoryInteractor.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				02CDED3E23C0758800803390 /* KoratMobileDeviceCenter.swift */,
 				02C87F7F23C821DC00A4DBDC /* KoratApp.swift */,
+				02BA94B82403150100EC3C5A /* PluginManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
