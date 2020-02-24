@@ -10,10 +10,12 @@ import Foundation
 import NIO
 import Combine
 import KoratFoundation
+import KoratPlugin
 
-protocol Disposable {
-    func dispose()
-}
+typealias DeviceEvent = KoratPlugin.DeviceEvent
+typealias Disposable = KoratPlugin.Disposable
+typealias MobileDeviceCenter = KoratPlugin.MobileDeviceCenter
+typealias MobileDevice = KoratPlugin.MobileDevice
 
 struct Dispose: Disposable {
     private let action: () -> Void
@@ -33,11 +35,6 @@ extension Disposable {
             self.dispose()
         }.store(in: &set)
     }
-}
-
-protocol MobileDeviceCenter {
-    func subscribeEvent(callback: @escaping (Result<DeviceEvent, Error>) -> Void) -> Disposable
-    func subscribeDeviceMessage(udid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable
 }
 
 class KoratMobileDeviceCenter: MobileDeviceCenter {
@@ -75,7 +72,7 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
                 
                 guard type == .add else {
                     let event = DeviceEvent(
-                        device: MobileDevice(name: nil, udid: udid),
+                        device: KoratPlugin.MobileDevice(name: nil, udid: udid),
                         type: type,
                         connectionType: connectionType
                     )
@@ -124,7 +121,7 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
 
         let disposing = pool.add { result in
             switch result {
-            case .success(let id, let data):
+            case .success(let (id, data)):
                 guard id == id else {
                     return
                 }
