@@ -16,7 +16,7 @@ struct SwiftiDevice {
             defer { client.free() }
             return try client.getName()
         } catch {
-            Logger.error(error)
+            log.error("\(error.localizedDescription)")
             return nil
         }
     }
@@ -29,7 +29,7 @@ struct SwiftiDevice {
         do {
             device = try .init(udid: udid)
         } catch {
-            Logger.error(error)
+            log.error(error)
             return nil
         }
     }
@@ -53,7 +53,7 @@ struct SwiftiMobileDeviceCenter: MobileDeviceCenter {
             let devices = try SwiftiMobileDevice.MobileDevice.getDeviceList()
             return devices.compactMap { SwiftiDevice(udid: $0) }
         } catch {
-            Logger.error(error)
+            log.error(error)
             return []
         }
     }
@@ -64,7 +64,7 @@ struct SwiftiMobileDeviceCenter: MobileDeviceCenter {
                 body(event)
             }
         } catch {
-            Logger.error(error)
+            log.error(error)
         }
     }
     

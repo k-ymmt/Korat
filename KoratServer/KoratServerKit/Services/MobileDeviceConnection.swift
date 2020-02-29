@@ -104,7 +104,7 @@ class InternalNativeMobileDeviceConnection: NSObject, InternalMobileDeviceConnec
             while true {
                 let recvBytes = recv(connection, &bytes, bufferSize, 0)
                 guard recvBytes > -1 else {
-                    print("recv error: \(String(errorNumber: errno))")
+                    log.error("recv error: \(String(errorNumber: errno))")
                     return
                 }
                 switch recvBytes {

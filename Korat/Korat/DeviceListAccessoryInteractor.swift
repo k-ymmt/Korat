@@ -45,6 +45,6 @@ class DeviceListAccessoryInteractor: DeviceListAccessoryInteractable {
     }
     
     deinit {
-        print("deinit \(String(describing: type(of: self)))")
+        log.debug("deinit \(String(describing: type(of: self)))")
     }
 }

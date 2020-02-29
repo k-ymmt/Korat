@@ -49,7 +49,7 @@ class LoggerInteractor: LoggerInteractable {
     init(udid: String, deviceCenter: MobileDeviceCenter) {
         self.udid = udid
         self.deviceCenter = deviceCenter
-        print(udid)
+        log.debug("\(udid)")
         disposable = deviceCenter.subscribeDeviceMessage(udid: udid, id: "app.kymmt.Logger") { [weak self] (message) in
             switch message {
             case .success(let data):
@@ -63,7 +63,7 @@ class LoggerInteractor: LoggerInteractable {
                     source: LogMessage.Source(data.source)
                 ))
             case .failure(let error):
-                print(error)
+                log.error(error)
             }
         }
     }

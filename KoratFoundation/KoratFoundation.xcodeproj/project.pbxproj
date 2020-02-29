@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		027002C523CB543C00AFBC04 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 027002C423CB543C00AFBC04 /* GRPC */; };
+		029706F5240A2B5A001C4F34 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029706F4240A2B59001C4F34 /* Logger.swift */; };
+		02970703240A30B7001C4F34 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 02970702240A30B7001C4F34 /* Logging */; };
 		02C87FA823CB511600A4DBDC /* KoratFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C87F9E23CB511600A4DBDC /* KoratFoundation.framework */; };
 		02C87FAD23CB511600A4DBDC /* KoratFoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87FAC23CB511600A4DBDC /* KoratFoundationTests.swift */; };
 		02C87FAF23CB511600A4DBDC /* KoratFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 02C87FA123CB511600A4DBDC /* KoratFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		029706F4240A2B59001C4F34 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		02C87F9E23CB511600A4DBDC /* KoratFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KoratFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C87FA123CB511600A4DBDC /* KoratFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KoratFoundation.h; sourceTree = "<group>"; };
 		02C87FA223CB511600A4DBDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02970703240A30B7001C4F34 /* Logging in Frameworks */,
 				027002C523CB543C00AFBC04 /* GRPC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				02C87FB923CB518700A4DBDC /* Protobuf */,
+				029706F4240A2B59001C4F34 /* Logger.swift */,
 				02C87FA123CB511600A4DBDC /* KoratFoundation.h */,
 				02C87FA223CB511600A4DBDC /* Info.plist */,
 			);
@@ -144,6 +149,7 @@
 			name = KoratFoundation;
 			packageProductDependencies = (
 				027002C423CB543C00AFBC04 /* GRPC */,
+				02970702240A30B7001C4F34 /* Logging */,
 			);
 			productName = KoratFoundation;
 			productReference = 02C87F9E23CB511600A4DBDC /* KoratFoundation.framework */;
@@ -196,6 +202,7 @@
 			mainGroup = 02C87F9423CB511600A4DBDC;
 			packageReferences = (
 				027002C323CB543C00AFBC04 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				02970701240A30B7001C4F34 /* XCRemoteSwiftPackageReference "swift-log" */,
 			);
 			productRefGroup = 02C87F9F23CB511600A4DBDC /* Products */;
 			projectDirPath = "";
@@ -235,6 +242,7 @@
 				02C87FC523CB518700A4DBDC /* MobileDeviceService.pb.swift in Sources */,
 				02C87FC223CB518700A4DBDC /* Log.proto in Sources */,
 				02C87FC323CB518700A4DBDC /* Log.pb.swift in Sources */,
+				029706F5240A2B5A001C4F34 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +507,14 @@
 				version = "1.0.0-alpha.9";
 			};
 		};
+		02970701240A30B7001C4F34 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -506,6 +522,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 027002C323CB543C00AFBC04 /* XCRemoteSwiftPackageReference "grpc-swift" */;
 			productName = GRPC;
+		};
+		02970702240A30B7001C4F34 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02970701240A30B7001C4F34 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

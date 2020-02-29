@@ -29,6 +29,6 @@ class LoggerPresenter: LoggerPresentable {
     }
     
     deinit {
-        print("\(String(describing: type(of: self))) deinit")
+        log.debug("\(String(describing: type(of: self))) deinit")
     }
 }

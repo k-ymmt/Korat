@@ -29,7 +29,7 @@ class SwiftiMobileDeviceConnectionPool: MobileDeviceConnectionPool {
         lock.lock()
         defer { lock.unlock() }
         if let connection = pool[udid] {
-            Logger.log("get pool")
+            log.debug("get pool")
             connection.referenceCount += 1
             return connection
         }
@@ -45,10 +45,10 @@ class SwiftiMobileDeviceConnectionPool: MobileDeviceConnectionPool {
             do {
             try connection.start()
             } catch {
-                print(error)
+                log.error(error)
             }
         }
-        Logger.log("create connection")
+        log.debug("create connection")
         return connection
     }
     

@@ -41,7 +41,7 @@ public class KoratServer {
     public func close() throws {
         guard let group = self.group,
             let server = self.server else {
-                Logger.log("server already closed")
+                log.warning("server already closed")
                 return
         }
         
@@ -56,7 +56,7 @@ public class KoratServer {
         do {
             try close()
         } catch {
-            Logger.error(error)
+            log.error(error)
         }
     }
 }
@@ -76,7 +76,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
         do {
             try center.unsubscribeEvent()
         } catch {
-            Logger.error(error)
+            log.error(error)
         }
         
         return context.eventLoop.makeSucceededFuture(.init())
@@ -114,7 +114,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
             let name = try center.getDeviceName(udid: request.udid) ?? ""
             return context.eventLoop.makeSucceededFuture(.with { $0.name = name })
         } catch {
-            Logger.log(error.localizedDescription)
+            log.error(error)
             return context.eventLoop.makeFailedFuture(error)
         }
     }
@@ -123,7 +123,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
         return context.eventLoop.makeSucceededFuture({ event in
             switch event {
             case .message(let request):
-                Logger.log("publish request")
+                log.debug("publish request")
                 let udid = request.udid
                 guard !udid.isEmpty, let data = request.message.data(using: .utf8) else {
                     return
@@ -132,7 +132,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
                     let connection = try self.pool.getOrCreateConnection(udid: udid)
                     try connection.send(data: data)
                 } catch {
-                    Logger.log(error.localizedDescription)
+                    log.error(error)
                     context.responsePromise.fail(error)
                 }
             case .end:
@@ -142,7 +142,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
     }
     
     func subscribe(request: SubscribeRequest, context: StreamingResponseCallContext<SubscribeResponse>) -> EventLoopFuture<GRPCStatus> {
-        print("subscribe start")
+        log.debug("subscribe start")
         let udid = request.udid
         guard !udid.isEmpty else {
             return context.eventLoop.makeFailedFuture(GRPCStatus(code: .invalidArgument, message: "udid is required not empty"))
@@ -150,11 +150,11 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
         do {
             let connection = try pool.getOrCreateConnection(udid: udid)
             connection.receive { (data) in
-                Logger.log("received value: \(String(data: data, encoding: .utf8) ?? "nil"))")
+                log.debug("received value: \(String(data: data, encoding: .utf8) ?? "nil"))")
                 _ = context.sendResponse(.with { $0.message = data })
             }
         } catch {
-            Logger.log(error.localizedDescription)
+            log.error(error)
             context.statusPromise.fail(GRPCStatus(code: .internalError, message: "receive failed error: \(error)"))
         }
         

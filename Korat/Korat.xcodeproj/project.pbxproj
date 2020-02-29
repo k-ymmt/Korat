@@ -20,6 +20,7 @@
 		024CFFF923B7BB690073C862 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFF823B7BB690073C862 /* MainViewController.xib */; };
 		024CFFFD23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CFFFC23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift */; };
 		024CFFFF23B7C2D80073C862 /* DeviceListAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFFE23B7C2D80073C862 /* DeviceListAccessoryViewController.xib */; };
+		029706F7240A2CEA001C4F34 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029706F6240A2CEA001C4F34 /* Logger.swift */; };
 		029A79BB23C11F94004F6E4C /* PropertyPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BA23C11F94004F6E4C /* PropertyPublished.swift */; };
 		029A79BD23C11FE3004F6E4C /* ActionPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BC23C11FE3004F6E4C /* ActionPublished.swift */; };
 		02BA94B92403150100EC3C5A /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA94B82403150100EC3C5A /* PluginManager.swift */; };
@@ -108,6 +109,7 @@
 		0264F6832402EDBD00173BE0 /* Logger.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Logger.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		0264F6852402EDBD00173BE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0276086323BD01AA00043A66 /* KoratServerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratServerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		029706F6240A2CEA001C4F34 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		029A79BA23C11F94004F6E4C /* PropertyPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPublished.swift; sourceTree = "<group>"; };
 		029A79BC23C11FE3004F6E4C /* ActionPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPublished.swift; sourceTree = "<group>"; };
 		02BA94B82403150100EC3C5A /* PluginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginManager.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				024593C823B599010057DE97 /* Info.plist */,
 				024593C923B599010057DE97 /* Korat.entitlements */,
 				024593C223B599010057DE97 /* Preview Content */,
+				029706F6240A2CEA001C4F34 /* Logger.swift */,
 			);
 			path = Korat;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				024CFFF723B7BB5A0073C862 /* MainViewController.swift in Sources */,
 				02C87F8B23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift in Sources */,
 				02CDED4423C0DBB100803390 /* LoggerPresenter.swift in Sources */,
+				029706F7240A2CEA001C4F34 /* Logger.swift in Sources */,
 				02C87F8023C821DC00A4DBDC /* KoratApp.swift in Sources */,
 				024CFFFD23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift in Sources */,
 				024CFFF523B7B9B30073C862 /* MainWindowController.swift in Sources */,

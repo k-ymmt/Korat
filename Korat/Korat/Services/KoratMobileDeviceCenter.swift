@@ -66,7 +66,7 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
                     !udid.isEmpty,
                     let type = DeviceEvent.EventType(response.type),
                     let connectionType = DeviceEvent.ConnectionType(response.connectionType) else {
-                        print("unknown event: \(response)")
+                        log.info("unknown event: \(response)")
                         return
                 }
                 
@@ -158,7 +158,7 @@ class CallbackPool<T> {
         do {
             try status?.close()
         } catch {
-            print(error)
+            log.error(error)
         }
         status = nil
         started = false

@@ -15,13 +15,13 @@
         "repositoryURL": "https://github.com/k-ymmt/KoratPlugin.git",
         "state": {
           "branch": null,
-          "revision": "22901b4b7d9dee1ad4af067b3d890d9c8e59b8f7",
+          "revision": "d01c6eb180712414427c4d03e49e779be2f973a3",
           "version": null
         }
       },
       {
         "package": "swift-log",
-        "repositoryURL": "https://github.com/apple/swift-log",
+        "repositoryURL": "https://github.com/apple/swift-log.git",
         "state": {
           "branch": null,
           "revision": "74d7b91ceebc85daf387ebb206003f78813f71aa",
