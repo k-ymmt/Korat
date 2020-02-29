@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import KoratPlugin
 
 protocol DeviceListAccessoryInteractable {
     var selectedDevicePublisher: PropertyPublisher<MobileDevice?> { get }
@@ -28,9 +29,9 @@ class DeviceListAccessoryInteractor: DeviceListAccessoryInteractable {
         self.mobileCenter = mobileCenter
         self.app = app
 
-        app.deviceSelectedPublisher
-            .bind(to: _selectedDevicePublisher)
-            .store(in: &cancellables)
+        app.subscribeSelectedDeviceChanged { [weak self] (device) in
+            self?._selectedDevicePublisher.value = device
+        }.store(in: &cancellables)
         mobileCenter.subscribeEvent { [weak self] (result) in
             guard let event = try? result.get() else {
                 return

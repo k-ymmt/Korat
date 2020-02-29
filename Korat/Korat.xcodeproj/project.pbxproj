@@ -20,13 +20,14 @@
 		024CFFF923B7BB690073C862 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFF823B7BB690073C862 /* MainViewController.xib */; };
 		024CFFFD23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CFFFC23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift */; };
 		024CFFFF23B7C2D80073C862 /* DeviceListAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024CFFFE23B7C2D80073C862 /* DeviceListAccessoryViewController.xib */; };
+		029706E624093052001C4F34 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029706E524093052001C4F34 /* MainRouter.swift */; };
+		029706E824093063001C4F34 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029706E724093063001C4F34 /* MainPresenter.swift */; };
+		029706EA24093070001C4F34 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029706E924093070001C4F34 /* MainInteractor.swift */; };
+		029706EC2409B1FB001C4F34 /* CombineTypealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029706EB2409B1FB001C4F34 /* CombineTypealias.swift */; };
 		029706F7240A2CEA001C4F34 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029706F6240A2CEA001C4F34 /* Logger.swift */; };
 		029A79BB23C11F94004F6E4C /* PropertyPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BA23C11F94004F6E4C /* PropertyPublished.swift */; };
 		029A79BD23C11FE3004F6E4C /* ActionPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A79BC23C11FE3004F6E4C /* ActionPublished.swift */; };
 		02BA94B92403150100EC3C5A /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA94B82403150100EC3C5A /* PluginManager.swift */; };
-		02BA94C0240321AB00EC3C5A /* KoratPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02BA94BF240321AB00EC3C5A /* KoratPlugin */; };
-		02BA94C1240321AB00EC3C5A /* KoratPlugin in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 02BA94BF240321AB00EC3C5A /* KoratPlugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		02BA94CB2403273900EC3C5A /* KoratPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02BA94CA2403273900EC3C5A /* KoratPlugin */; };
 		02C87F8023C821DC00A4DBDC /* KoratApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F7F23C821DC00A4DBDC /* KoratApp.swift */; };
 		02C87F8B23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F8A23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift */; };
 		02C87F8D23CA1C3700A4DBDC /* DeviceListAccessoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C87F8C23CA1C3700A4DBDC /* DeviceListAccessoryPresenter.swift */; };
@@ -40,6 +41,9 @@
 		02DAA48B2402EF660002142C /* Logger.plugin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0264F6832402EDBD00173BE0 /* Logger.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02DAA4A72402F3800002142C /* KoratLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DAA4A62402F3800002142C /* KoratLogger.swift */; };
 		02E34B8723C597660043258B /* EventPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E34B8623C597660043258B /* EventPublished.swift */; };
+		02F61F73240681F7001502A4 /* KoratPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02F61F72240681F7001502A4 /* KoratPlugin */; };
+		02F61F74240681F7001502A4 /* KoratPlugin in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 02F61F72240681F7001502A4 /* KoratPlugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		02F61F7A240682C8001502A4 /* KoratPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02F61F79240682C8001502A4 /* KoratPlugin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +80,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				02BA94C1240321AB00EC3C5A /* KoratPlugin in Embed Frameworks */,
 				02D0D95C24032D2400FD83BC /* KoratFoundation.framework in Embed Frameworks */,
+				02F61F74240681F7001502A4 /* KoratPlugin in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +113,11 @@
 		0264F6832402EDBD00173BE0 /* Logger.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Logger.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		0264F6852402EDBD00173BE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0276086323BD01AA00043A66 /* KoratServerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratServerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		029706E524093052001C4F34 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		029706E724093063001C4F34 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		029706E924093070001C4F34 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		029706EB2409B1FB001C4F34 /* CombineTypealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTypealias.swift; sourceTree = "<group>"; };
+		029706ED2409BB1B001C4F34 /* KoratServerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratServerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		029706F6240A2CEA001C4F34 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		029A79BA23C11F94004F6E4C /* PropertyPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPublished.swift; sourceTree = "<group>"; };
 		029A79BC23C11FE3004F6E4C /* ActionPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPublished.swift; sourceTree = "<group>"; };
@@ -133,8 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02BA94C0240321AB00EC3C5A /* KoratPlugin in Frameworks */,
 				02D0D95B24032D2400FD83BC /* KoratFoundation.framework in Frameworks */,
+				02F61F73240681F7001502A4 /* KoratPlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02BA94CB2403273900EC3C5A /* KoratPlugin in Frameworks */,
+				02F61F7A240682C8001502A4 /* KoratPlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +216,7 @@
 				024593C823B599010057DE97 /* Info.plist */,
 				024593C923B599010057DE97 /* Korat.entitlements */,
 				024593C223B599010057DE97 /* Preview Content */,
+				029706EB2409B1FB001C4F34 /* CombineTypealias.swift */,
 				029706F6240A2CEA001C4F34 /* Logger.swift */,
 			);
 			path = Korat;
@@ -259,6 +269,9 @@
 			isa = PBXGroup;
 			children = (
 				02C87F8923CA1C1300A4DBDC /* Views */,
+				029706E524093052001C4F34 /* MainRouter.swift */,
+				029706E724093063001C4F34 /* MainPresenter.swift */,
+				029706E924093070001C4F34 /* MainInteractor.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -357,7 +370,7 @@
 			);
 			name = Korat;
 			packageProductDependencies = (
-				02BA94BF240321AB00EC3C5A /* KoratPlugin */,
+				02F61F72240681F7001502A4 /* KoratPlugin */,
 			);
 			productName = Korat;
 			productReference = 024593B923B598FE0057DE97 /* Korat.app */;
@@ -413,7 +426,7 @@
 			);
 			name = Logger;
 			packageProductDependencies = (
-				02BA94CA2403273900EC3C5A /* KoratPlugin */,
+				02F61F79240682C8001502A4 /* KoratPlugin */,
 			);
 			productName = Logger;
 			productReference = 0264F6832402EDBD00173BE0 /* Logger.plugin */;
@@ -457,7 +470,7 @@
 			mainGroup = 024593B023B598FE0057DE97;
 			packageReferences = (
 				025ECB2E23B7EB1000FDBFD1 /* XCRemoteSwiftPackageReference "grpc-swift" */,
-				02BA94BE240321AB00EC3C5A /* XCRemoteSwiftPackageReference "KoratPlugin" */,
+				02F61F71240681F7001502A4 /* XCRemoteSwiftPackageReference "KoratPlugin" */,
 			);
 			productRefGroup = 024593BA23B598FE0057DE97 /* Products */;
 			projectDirPath = "";
@@ -517,11 +530,14 @@
 				02C87F8B23CA1C2E00A4DBDC /* DeviceListAccessoryInteractor.swift in Sources */,
 				02CDED4423C0DBB100803390 /* LoggerPresenter.swift in Sources */,
 				029706F7240A2CEA001C4F34 /* Logger.swift in Sources */,
+				029706EA24093070001C4F34 /* MainInteractor.swift in Sources */,
+				029706EC2409B1FB001C4F34 /* CombineTypealias.swift in Sources */,
 				02C87F8023C821DC00A4DBDC /* KoratApp.swift in Sources */,
 				024CFFFD23B7C2CA0073C862 /* DeviceListAccessoryViewController.swift in Sources */,
 				024CFFF523B7B9B30073C862 /* MainWindowController.swift in Sources */,
 				02C87F8F23CA1C4300A4DBDC /* DeviceListAccessoryRouter.swift in Sources */,
 				029A79BB23C11F94004F6E4C /* PropertyPublished.swift in Sources */,
+				029706E824093063001C4F34 /* MainPresenter.swift in Sources */,
 				02CDED4623C0DC3200803390 /* LoggerInteractor.swift in Sources */,
 				02CDED4223C0D87A00803390 /* LoggerRouter.swift in Sources */,
 				02E34B8723C597660043258B /* EventPublished.swift in Sources */,
@@ -531,6 +547,7 @@
 				029A79BD23C11FE3004F6E4C /* ActionPublished.swift in Sources */,
 				02C87F8D23CA1C3700A4DBDC /* DeviceListAccessoryPresenter.swift in Sources */,
 				02BA94B92403150100EC3C5A /* PluginManager.swift in Sources */,
+				029706E624093052001C4F34 /* MainRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,6 +880,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = app.kymmt.Logger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -886,6 +904,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = app.kymmt.Logger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -954,25 +973,25 @@
 				minimumVersion = "1.0.0-alpha.8";
 			};
 		};
-		02BA94BE240321AB00EC3C5A /* XCRemoteSwiftPackageReference "KoratPlugin" */ = {
+		02F61F71240681F7001502A4 /* XCRemoteSwiftPackageReference "KoratPlugin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/k-ymmt/KoratPlugin.git";
 			requirement = {
 				kind = revision;
-				revision = 22901b4b7d9dee1ad4af067b3d890d9c8e59b8f7;
+				revision = d01c6eb180712414427c4d03e49e779be2f973a3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		02BA94BF240321AB00EC3C5A /* KoratPlugin */ = {
+		02F61F72240681F7001502A4 /* KoratPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 02BA94BE240321AB00EC3C5A /* XCRemoteSwiftPackageReference "KoratPlugin" */;
+			package = 02F61F71240681F7001502A4 /* XCRemoteSwiftPackageReference "KoratPlugin" */;
 			productName = KoratPlugin;
 		};
-		02BA94CA2403273900EC3C5A /* KoratPlugin */ = {
+		02F61F79240682C8001502A4 /* KoratPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 02BA94BE240321AB00EC3C5A /* XCRemoteSwiftPackageReference "KoratPlugin" */;
+			package = 02F61F71240681F7001502A4 /* XCRemoteSwiftPackageReference "KoratPlugin" */;
 			productName = KoratPlugin;
 		};
 /* End XCSwiftPackageProductDependency section */

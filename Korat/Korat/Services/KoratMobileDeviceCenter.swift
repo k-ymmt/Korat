@@ -13,29 +13,8 @@ import KoratFoundation
 import KoratPlugin
 
 typealias DeviceEvent = KoratPlugin.DeviceEvent
-typealias Disposable = KoratPlugin.Disposable
 typealias MobileDeviceCenter = KoratPlugin.MobileDeviceCenter
 typealias MobileDevice = KoratPlugin.MobileDevice
-
-struct Dispose: Disposable {
-    private let action: () -> Void
-    
-    init(action: @escaping () -> Void) {
-        self.action = action
-    }
-    
-    func dispose() {
-        self.action()
-    }
-}
-
-extension Disposable {
-    func store(in set: inout Set<AnyCancellable>) {
-        AnyCancellable {
-            self.dispose()
-        }.store(in: &set)
-    }
-}
 
 class KoratMobileDeviceCenter: MobileDeviceCenter {
     static let `default` = KoratMobileDeviceCenter()
@@ -94,15 +73,15 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
         }
     }
     
-    func subscribeEvent(callback: @escaping (Result<DeviceEvent, Error>) -> Void) -> Disposable {
+    func subscribeEvent(callback: @escaping (Result<DeviceEvent, Error>) -> Void) -> Cancellable {
         let id = subscribeEventCallbacks.add(callback)
         
-        return Dispose { [weak self] in
+        return AnyCancellable { [weak self] in
             self?.subscribeEventCallbacks.remove(id: id)
         }
     }
     
-    func subscribeDeviceMessage(udid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable {
+    func subscribeDeviceMessage(udid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Cancellable {
         let pool: CallbackPool<Result<(String, Data), Error>>
         if let cache = subscribeDeviceMessageCallbacks[udid] {
             pool = cache
@@ -130,7 +109,7 @@ class KoratMobileDeviceCenter: MobileDeviceCenter {
                 callback(.failure(error))
             }
         }
-        return Dispose {
+        return AnyCancellable {
             pool.remove(id: disposing)
         }
     }

@@ -42,7 +42,7 @@ class LoggerInteractor: LoggerInteractable {
     let deviceCenter: MobileDeviceCenter
     
     private let udid: String
-    private var disposable: Disposable!
+    private var disposable: Cancellable!
     
     private var logReceivedCallback: ((LogMessage) -> Void)?
     

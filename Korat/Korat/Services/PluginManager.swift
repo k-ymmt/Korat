@@ -15,7 +15,7 @@ class PluginManager {
         if let builtinPluginURL = Bundle.main.builtInPlugInsURL,
             let builtinPlugins = loadPlugins(from: builtinPluginURL) {
             plugins += builtinPlugins
-            print("load plugins from built-in: \(builtinPluginURL.absoluteString)")
+            log.info("load plugins from built-in: \(builtinPluginURL.absoluteString)")
         }
         let userPluginURLs = FileManager.default.urls(
             for: .applicationSupportDirectory,
@@ -50,11 +50,11 @@ class PluginManager {
             }
             
             guard bundle.load() else {
-                print("[WARN] cannot load bundle: \(item.absoluteString)")
+                log.warning("cannot load bundle: \(item.absoluteString)")
                 continue
             }
             guard let plugin = bundle.principalClass as? Plugin.Type else {
-                print("[WARN] plugin principal class is not inherited type Plugin: \(item.absoluteString)")
+                log.warning("plugin principal class is not inherited type Plugin: \(item.absoluteString)")
                 continue
             }
             

@@ -27,7 +27,7 @@ final class MainWindowController: NSWindowController {
         v.view = titlebarVC.view
         window.addTitlebarAccessoryViewController(v)
         window.setFrameAutosaveName("Main Window")
-        mainVC = MainViewController()
+        mainVC = MainRouter.assembleModules()
         window.contentView = mainVC.view
         
         super.init(window: window)

@@ -7,18 +7,27 @@
 //
 
 import Foundation
+import KoratPlugin
+import Combine
 
-protocol KoratAppProtocol {
-    var deviceSelectedPublisher: PropertyPublisher<MobileDevice?> { get }
-    func selectDevice(_ device: MobileDevice?)
-}
-
-class KoratApp: KoratAppProtocol {
-    static let instance: KoratApp = KoratApp()
-
-    @PropertyPublished<MobileDevice?>(defaultValue: nil) var deviceSelectedPublisher: PropertyPublisher<MobileDevice?>
+final class KoratApp: KoratAppProtocol {
+    static let instance: KoratAppProtocol = KoratApp()
+    
+    let mobileDeviceCenter: MobileDeviceCenter
+    
+    private let notifySelectedDeviceChanged: CurrentValueSubject<MobileDevice?, Never> = CurrentValueSubject(nil)
+    
+    init() {
+        self.mobileDeviceCenter = KoratMobileDeviceCenter.default
+    }
+    
+    func subscribeSelectedDeviceChanged(observer: @escaping (MobileDevice?) -> Void) -> Cancellable {
+        notifySelectedDeviceChanged.sink(receiveValue: observer)
+    }
     
     func selectDevice(_ device: MobileDevice?) {
-        _deviceSelectedPublisher.value = device
+        notifySelectedDeviceChanged.send(device)
     }
+    
+    
 }
