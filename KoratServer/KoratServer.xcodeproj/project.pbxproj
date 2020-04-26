@@ -19,6 +19,8 @@
 		025ECB1C23B7E5E400FDBFD1 /* MobileDeviceCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB1B23B7E5E400FDBFD1 /* MobileDeviceCenter.swift */; };
 		025ECB3423B7EC0F00FDBFD1 /* KoratServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB3323B7EC0F00FDBFD1 /* KoratServer.swift */; };
 		025ECB3D23B8BCD800FDBFD1 /* Protobuf+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025ECB3C23B8BCD800FDBFD1 /* Protobuf+Init.swift */; };
+		026B6517245553FF002E56F0 /* KoratError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B6516245553FF002E56F0 /* KoratError.swift */; };
+		026B651924558500002E56F0 /* MobileDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B651824558500002E56F0 /* MobileDevice.swift */; };
 		0293847223BA261B000C0E0C /* MobileDeviceConnectionPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293847123BA261B000C0E0C /* MobileDeviceConnectionPool.swift */; };
 		02970700240A2FD5001C4F34 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029706FF240A2FD5001C4F34 /* Logger.swift */; };
 		02C87FC723CB520600A4DBDC /* KoratFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C87FC623CB520600A4DBDC /* KoratFoundation.framework */; };
@@ -91,6 +93,8 @@
 		025ECB1B23B7E5E400FDBFD1 /* MobileDeviceCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceCenter.swift; sourceTree = "<group>"; };
 		025ECB3323B7EC0F00FDBFD1 /* KoratServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoratServer.swift; sourceTree = "<group>"; };
 		025ECB3C23B8BCD800FDBFD1 /* Protobuf+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protobuf+Init.swift"; sourceTree = "<group>"; };
+		026B6516245553FF002E56F0 /* KoratError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoratError.swift; sourceTree = "<group>"; };
+		026B651824558500002E56F0 /* MobileDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDevice.swift; sourceTree = "<group>"; };
 		0293847123BA261B000C0E0C /* MobileDeviceConnectionPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDeviceConnectionPool.swift; sourceTree = "<group>"; };
 		029706FF240A2FD5001C4F34 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		02C87FC623CB520600A4DBDC /* KoratFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KoratFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,8 +161,8 @@
 		025ECAFA23B7E55C00FDBFD1 /* KoratServerKit */ = {
 			isa = PBXGroup;
 			children = (
-				025ECB3B23B8BC3B00FDBFD1 /* ProtobufExtension */,
 				025ECB1A23B7E5C900FDBFD1 /* Services */,
+				026B6516245553FF002E56F0 /* KoratError.swift */,
 				025ECAFB23B7E55C00FDBFD1 /* KoratServerKit.h */,
 				025ECAFC23B7E55C00FDBFD1 /* Info.plist */,
 				025ECB3323B7EC0F00FDBFD1 /* KoratServer.swift */,
@@ -192,15 +196,9 @@
 				025ECB1B23B7E5E400FDBFD1 /* MobileDeviceCenter.swift */,
 				0293847123BA261B000C0E0C /* MobileDeviceConnectionPool.swift */,
 				02492F7623BDDD6B00888B68 /* MobileDeviceConnection.swift */,
+				026B651824558500002E56F0 /* MobileDevice.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		025ECB3B23B8BC3B00FDBFD1 /* ProtobufExtension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ProtobufExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,9 +352,11 @@
 			files = (
 				0293847223BA261B000C0E0C /* MobileDeviceConnectionPool.swift in Sources */,
 				025ECB3423B7EC0F00FDBFD1 /* KoratServer.swift in Sources */,
+				026B651924558500002E56F0 /* MobileDevice.swift in Sources */,
 				025ECB3D23B8BCD800FDBFD1 /* Protobuf+Init.swift in Sources */,
 				02970700240A2FD5001C4F34 /* Logger.swift in Sources */,
 				02492F7723BDDD6B00888B68 /* MobileDeviceConnection.swift in Sources */,
+				026B6517245553FF002E56F0 /* KoratError.swift in Sources */,
 				025ECB1C23B7E5E400FDBFD1 /* MobileDeviceCenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

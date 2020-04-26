@@ -11,7 +11,7 @@ import SwiftiMobileDevice
 import KoratFoundation
 
 extension SubscribeDeviceEventResponse.EventType {
-    init(type: MobileDevice.EventType) {
+    init(type: SwiftiMobileDevice.MobileDevice.EventType) {
         switch type {
         case .add:
             self = .add

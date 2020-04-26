@@ -55,32 +55,3 @@ extension MobileDevice {
         }
     }
 }
-
-class MobileDevicePool {
-    static let instance: MobileDevicePool = .init()
-    
-    private let locker: NSRecursiveLock = NSRecursiveLock()
-    private var deviceList: [String: MobileDevice] = [:]
-    
-    private init() {
-    }
-    
-    func append(udid: String) throws {
-        locker.lock()
-        defer { locker.unlock() }
-        guard !deviceList.keys.contains(udid) else {
-            log.warning("\(udid) already exist")
-            return
-        }
-        
-        let device = try MobileDevice(udid: udid)
-        deviceList[udid] = device
-    }
-    
-    func remove(udid: String) {
-        locker.lock()
-        defer { locker.unlock() }
-        
-        deviceList.removeValue(forKey: udid)
-    }
-}

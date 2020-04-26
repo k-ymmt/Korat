@@ -32,7 +32,7 @@ public class KoratServer {
             target: .hostAndPort(host, port),
             eventLoopGroup: group,
             serviceProviders: [MobileDeviceProvider(
-                center: SwiftiMobileDeviceCenter.default,
+                center: SwiftiMobileDeviceCenter.instance,
                 pool: SwiftiMobileDeviceConnectionPool.instance
             )]
         )).wait()
@@ -84,13 +84,14 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
     
     func getDeviceList(request: DeviceListRequest, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceListResponse> {
         var response = DeviceListResponse()
-        
+
         response.devices = center.getDeviceList().map { device in
             Device.with {
-                $0.name = device.name ?? ""
+                $0.name = (try? device.getDeviceName()) ?? ""
                 $0.udid = device.udid
             }
         }
+        
         return context.eventLoop.makeSucceededFuture(response)
     }
     
@@ -99,6 +100,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
             guard let udid = device.udid, let type = device.type, let connectionType = device.connectionType else {
                 return
             }
+
             _ = context.sendResponse(.with {
                 $0.udid = udid
                 $0.type = SubscribeDeviceEventResponse.EventType(type: type)

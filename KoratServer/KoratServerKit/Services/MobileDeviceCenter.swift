@@ -9,58 +9,51 @@
 import Foundation
 import SwiftiMobileDevice
 
-struct SwiftiDevice {
-    var name: String? {
-        do {
-            var client = try LockdownClient(device: device, withHandshake: true)
-            defer { client.free() }
-            return try client.getName()
-        } catch {
-            log.error("\(error.localizedDescription)")
-            return nil
-        }
-    }
-    
-    let udid: String
-    private let device: SwiftiMobileDevice.Device
-    
-    init?(udid: String) {
-        self.udid = udid
-        do {
-            device = try .init(udid: udid)
-        } catch {
-            log.error(error)
-            return nil
-        }
-    }
-}
-
 protocol MobileDeviceCenter {
-    func getDeviceList() -> [SwiftiDevice]
-    func subscribeEvent(body: @escaping (MobileDevice.Event) -> Void)
+    func getDevice(udid: String) -> MobileDevice?
+    func getDeviceList() -> [MobileDevice]
+    func subscribeEvent(body: @escaping (SwiftiMobileDevice.MobileDevice.Event) -> Void)
     func unsubscribeEvent() throws
     func getDeviceName(udid: String) throws -> String?
 }
 
-struct SwiftiMobileDeviceCenter: MobileDeviceCenter {
-    static let `default` = SwiftiMobileDeviceCenter()
+class SwiftiMobileDeviceCenter: MobileDeviceCenter {
+    static let instance = SwiftiMobileDeviceCenter()
+    
+    private let locker: NSRecursiveLock = NSRecursiveLock()
+    private var deviceList: [String: MobileDevice] = [:]
     
     private init() {
     }
     
-    func getDeviceList() -> [SwiftiDevice] {
-        do {
-            let devices = try SwiftiMobileDevice.MobileDevice.getDeviceList()
-            return devices.compactMap { SwiftiDevice(udid: $0) }
-        } catch {
-            log.error(error)
-            return []
-        }
+    func getDevice(udid: String) -> MobileDevice? {
+        locker.lock()
+        defer { locker.unlock() }
+        return deviceList[udid]
     }
     
-    func subscribeEvent(body: @escaping (MobileDevice.Event) -> Void) {
+    func getDeviceList() -> [MobileDevice] {
+        locker.lock()
+        defer { locker.unlock() }
+        return deviceList.values.map { $0 }
+    }
+    
+    func subscribeEvent(body: @escaping (SwiftiMobileDevice.MobileDevice.Event) -> Void) {
         do {
-            try SwiftiMobileDevice.MobileDevice.eventSubscribe { (event) in
+            try SwiftiMobileDevice.MobileDevice.eventSubscribe { [weak self] (event) in
+                guard let self = self, let udid = event.udid else {
+                    return
+                }
+                do {
+                    switch event.type {
+                    case .add:
+                        try self.appendPool(udid: udid)
+                    case .remove:
+                        self.removePool(udid: udid)
+                    default:
+                        break
+                    }
+                }
                 body(event)
             }
         } catch {
@@ -69,6 +62,12 @@ struct SwiftiMobileDeviceCenter: MobileDeviceCenter {
     }
     
     func unsubscribeEvent() throws {
+        locker.lock()
+        for device in deviceList.values {
+            device.free()
+        }
+        deviceList.removeAll()
+        locker.unlock()
         if let error = SwiftiMobileDevice.MobileDevice.eventUnsubscribe() {
             throw error
         }
@@ -80,5 +79,24 @@ struct SwiftiMobileDeviceCenter: MobileDeviceCenter {
         var client = try LockdownClient(device: device, withHandshake: true)
         defer { client.free() }
         return try client.getName()
+    }
+    
+    private func appendPool(udid: String) throws {
+        locker.lock()
+        defer { locker.unlock() }
+        guard !deviceList.keys.contains(udid) else {
+            log.warning("\(udid) already exist")
+            return
+        }
+        
+        let device = try MobileDevice(udid: udid)
+        deviceList[udid] = device
+    }
+    
+    private func removePool(udid: String) {
+        locker.lock()
+        defer { locker.unlock() }
+        
+        deviceList.removeValue(forKey: udid)
     }
 }
