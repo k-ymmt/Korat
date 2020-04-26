@@ -8,8 +8,8 @@
 
 import Foundation
 import Combine
-import SwiftProtobuf
 import KoratFoundation
+import KoratPlugin
 
 struct LogMessage {
     enum Level {
@@ -41,29 +41,43 @@ protocol LoggerInteractable {
 class LoggerInteractor: LoggerInteractable {
     let deviceCenter: MobileDeviceCenter
     
-    private let udid: String
-    private var disposable: Cancellable!
+    private var udid: String?
+    private var cancellable: Cancellable!
     
     private var logReceivedCallback: ((LogMessage) -> Void)?
     
-    init(udid: String, deviceCenter: MobileDeviceCenter) {
-        self.udid = udid
-        self.deviceCenter = deviceCenter
-        log.debug("\(udid)")
-        disposable = deviceCenter.subscribeDeviceMessage(udid: udid, id: "app.kymmt.Logger") { [weak self] (message) in
-            switch message {
-            case .success(let data):
-                guard let data = try? Log(serializedData: data) else {
-                    return
+    init(app: KoratAppProtocol) {
+        self.deviceCenter = app.mobileDeviceCenter
+        app.subscribeSelectedDeviceChanged { [weak self] (device) in
+            guard let self = self else {
+                return
+            }
+            guard let device = device else {
+                self.cancellable?.cancel()
+                return
+            }
+            
+            let udid = device.udid
+            guard self.udid != udid else {
+                return
+            }
+            self.udid = udid
+            
+            self.cancellable = self.deviceCenter.subscribeDeviceMessage(udid: udid, id: "app.kymmt.Logger") { [weak self] (message) in
+                switch message {
+                case .success(let data):
+                    guard let data = try? Log(serializedData: data) else {
+                        return
+                    }
+                    self?.logReceivedCallback?(.init(
+                        message: data.message,
+                        date: Date(timeIntervalSince1970: data.time),
+                        level: LogMessage.Level(data.level),
+                        source: LogMessage.Source(data.source)
+                        ))
+                case .failure(let error):
+                    log.error(error)
                 }
-                self?.logReceivedCallback?(.init(
-                    message: data.message,
-                    date: Date(timeIntervalSince1970: data.time),
-                    level: LogMessage.Level(data.level),
-                    source: LogMessage.Source(data.source)
-                ))
-            case .failure(let error):
-                log.error(error)
             }
         }
     }

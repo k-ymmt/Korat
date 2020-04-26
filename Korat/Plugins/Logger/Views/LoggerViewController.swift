@@ -8,7 +8,6 @@
 
 import Foundation
 import AppKit
-import NIO
 import Combine
 
 struct LoggerTableColumnIdentifier {

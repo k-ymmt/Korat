@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026B6524245604B7002E56F0 /* ActionPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B6523245604B6002E56F0 /* ActionPublished.swift */; };
+		026B6525245604B7002E56F0 /* PropertyPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B6522245604B6002E56F0 /* PropertyPublished.swift */; };
+		026B6526245604B7002E56F0 /* EventPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B6521245604B6002E56F0 /* EventPublished.swift */; };
 		027002C523CB543C00AFBC04 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 027002C423CB543C00AFBC04 /* GRPC */; };
 		029706F5240A2B5A001C4F34 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029706F4240A2B59001C4F34 /* Logger.swift */; };
 		02970703240A30B7001C4F34 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 02970702240A30B7001C4F34 /* Logging */; };
@@ -32,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		026B6521245604B6002E56F0 /* EventPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPublished.swift; sourceTree = "<group>"; };
+		026B6522245604B6002E56F0 /* PropertyPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyPublished.swift; sourceTree = "<group>"; };
+		026B6523245604B6002E56F0 /* ActionPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPublished.swift; sourceTree = "<group>"; };
 		029706F4240A2B59001C4F34 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		02C87F9E23CB511600A4DBDC /* KoratFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KoratFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C87FA123CB511600A4DBDC /* KoratFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KoratFoundation.h; sourceTree = "<group>"; };
@@ -90,6 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				02C87FB923CB518700A4DBDC /* Protobuf */,
+				026B6522245604B6002E56F0 /* PropertyPublished.swift */,
+				026B6523245604B6002E56F0 /* ActionPublished.swift */,
+				026B6521245604B6002E56F0 /* EventPublished.swift */,
 				029706F4240A2B59001C4F34 /* Logger.swift */,
 				02C87FA123CB511600A4DBDC /* KoratFoundation.h */,
 				02C87FA223CB511600A4DBDC /* Info.plist */,
@@ -238,11 +247,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C87FC423CB518700A4DBDC /* MobileDeviceService.grpc.swift in Sources */,
+				026B6524245604B7002E56F0 /* ActionPublished.swift in Sources */,
+				026B6526245604B7002E56F0 /* EventPublished.swift in Sources */,
 				02C87FC123CB518700A4DBDC /* MobileDeviceService.proto in Sources */,
 				02C87FC523CB518700A4DBDC /* MobileDeviceService.pb.swift in Sources */,
 				02C87FC223CB518700A4DBDC /* Log.proto in Sources */,
 				02C87FC323CB518700A4DBDC /* Log.pb.swift in Sources */,
 				029706F5240A2B5A001C4F34 /* Logger.swift in Sources */,
+				026B6525245604B7002E56F0 /* PropertyPublished.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

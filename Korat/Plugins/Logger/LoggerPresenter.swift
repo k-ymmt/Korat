@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KoratFoundation
 
 protocol LoggerPresentable {
     var messages: PropertyPublisher<[LogMessage]> { get }

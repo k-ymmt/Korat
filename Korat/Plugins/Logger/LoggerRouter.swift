@@ -8,14 +8,15 @@
 
 import Foundation
 import AppKit
+import KoratPlugin
+import KoratFoundation
 
 protocol LoggerRoutable {
 }
 
 struct LoggerRouter: LoggerRoutable {
-    static func assembleModules(udid: String) -> NSViewController {
-        let deviceCenter = KoratMobileDeviceCenter.default
-        let interactor = LoggerInteractor(udid: udid, deviceCenter: deviceCenter)
+    static func assembleModules(app: KoratAppProtocol) -> NSViewController {
+        let interactor = LoggerInteractor(app: app)
         var router = LoggerRouter()
         let presenter = LoggerPresenter(interactor: interactor, router: router)
         let viewController = LoggerViewController(presenter: presenter)

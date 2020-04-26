@@ -9,18 +9,20 @@
 import Foundation
 import AppKit
 import KoratPlugin
+import KoratFoundation
+
+let log = Logger(label: "app.kymmt.KoratLogger")
 
 class KoratLogger: NSObject, Plugin {
-    private let korat: Korat
+    let name: String = "Logger"
     
-    required init(korat: Korat) {
+    private let korat: KoratAppProtocol
+    
+    required init(korat: KoratAppProtocol) {
         self.korat = korat
     }
     
     func loadViewController() -> NSViewController {
-        print("foo")
         return NSViewController()
     }
-    
-    
 }
