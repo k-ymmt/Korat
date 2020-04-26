@@ -9,5 +9,6 @@
 import Foundation
 
 enum KoratError: Error {
+    case deviceNotExists(udid: String)
     case alreadyFree
 }

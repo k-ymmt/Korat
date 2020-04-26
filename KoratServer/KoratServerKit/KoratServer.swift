@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 import GRPC
 import SwiftiMobileDevice
 import KoratFoundation
@@ -72,7 +73,7 @@ class MobileDeviceProvider {
 }
 
 extension MobileDeviceProvider: MobileDeviceServiceProvider {
-    func unsubscribeDeviceEvent(request: UnsubscribeDeviceEventRequest, context: StatusOnlyCallContext) -> EventLoopFuture<UnsubscribeDeviceEventResponse> {
+    func unsubscribeDeviceEvent(request: VoidData, context: StatusOnlyCallContext) -> EventLoopFuture<VoidData> {
         do {
             try center.unsubscribeEvent()
         } catch {
@@ -82,7 +83,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
         return context.eventLoop.makeSucceededFuture(.init())
     }
     
-    func getDeviceList(request: DeviceListRequest, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceListResponse> {
+    func getDeviceList(request: VoidData, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceListResponse> {
         var response = DeviceListResponse()
 
         response.devices = center.getDeviceList().map { device in
@@ -95,7 +96,7 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
         return context.eventLoop.makeSucceededFuture(response)
     }
     
-    func subscribeDeviceEvent(request: SubscribeDeviceEventRequest, context: StreamingResponseCallContext<SubscribeDeviceEventResponse>) -> EventLoopFuture<GRPCStatus> {
+    func subscribeDeviceEvent(request: VoidData, context: StreamingResponseCallContext<SubscribeDeviceEventResponse>) -> EventLoopFuture<GRPCStatus> {
         center.subscribeEvent { (device) in
             guard let udid = device.udid, let type = device.type, let connectionType = device.connectionType else {
                 return
@@ -108,7 +109,6 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
             })
         }
         return context.statusPromise.futureResult
-        
     }
     
     func getDeviceName(request: DeviceNameRequest, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceNameResponse> {
@@ -158,6 +158,36 @@ extension MobileDeviceProvider: MobileDeviceServiceProvider {
         } catch {
             log.error(error)
             context.statusPromise.fail(GRPCStatus(code: .internalError, message: "receive failed error: \(error)"))
+        }
+        
+        return context.statusPromise.futureResult
+    }
+    
+    func captureSyslog(request: CaptureSyslogRequest, context: StreamingResponseCallContext<CaptureSyslogResponse>) -> EventLoopFuture<GRPCStatus> {
+        guard let device = center.getDevice(udid: request.udid) else {
+            return context.eventLoop.makeFailedFuture(KoratError.deviceNotExists(udid: request.udid))
+        }
+        
+        let cancellable: Cancellable
+        do {
+            cancellable = try device.startSyslogCapture { (data) in
+                guard context.eventLoop.inEventLoop else {
+                    return
+                }
+                _ = context.sendResponse(.with {
+                    $0.message = data.message
+                    $0.name = data.name
+                    $0.date = .init(date: data.date)
+                    $0.processInfo = data.processInfo
+                })
+            }
+        } catch {
+            log.error(error)
+            return context.eventLoop.makeFailedFuture(error)
+        }
+
+        context.statusPromise.futureResult.whenComplete { _ in
+            cancellable.cancel()
         }
         
         return context.statusPromise.futureResult

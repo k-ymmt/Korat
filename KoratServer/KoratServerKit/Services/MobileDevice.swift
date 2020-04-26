@@ -44,9 +44,19 @@ extension MobileDevice {
         guard let device = device, let lockdown = lockdown else {
             throw KoratError.alreadyFree
         }
-        var service = try lockdown.getService(service: .syslogRelay)
-        var client = try SyslogRelayClient(device: device, service: service)
-        let disposable = try client.startCaptureMessage(callback: callback)
+        var service: LockdownService!
+        var client: SyslogRelayClient!
+        var disposable: Disposable!
+        do {
+            service = try lockdown.getService(service: .syslogRelay)
+            client = try SyslogRelayClient(device: device, service: service)
+            disposable = try client.startCaptureMessage(callback: callback)
+        } catch {
+            service?.free()
+            client?.free()
+            disposable?.dispose()
+        }
+        
         
         return AnyCancellable {
             disposable.dispose()

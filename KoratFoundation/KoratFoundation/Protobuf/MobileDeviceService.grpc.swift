@@ -29,12 +29,13 @@ import SwiftProtobuf
 
 /// Usage: instantiate MobileDeviceServiceServiceClient, then call methods of this protocol to make API calls.
 public protocol MobileDeviceServiceService {
-  func getDeviceList(_ request: DeviceListRequest, callOptions: CallOptions?) -> UnaryCall<DeviceListRequest, DeviceListResponse>
-  func subscribeDeviceEvent(_ request: SubscribeDeviceEventRequest, callOptions: CallOptions?, handler: @escaping (SubscribeDeviceEventResponse) -> Void) -> ServerStreamingCall<SubscribeDeviceEventRequest, SubscribeDeviceEventResponse>
-  func unsubscribeDeviceEvent(_ request: UnsubscribeDeviceEventRequest, callOptions: CallOptions?) -> UnaryCall<UnsubscribeDeviceEventRequest, UnsubscribeDeviceEventResponse>
+  func getDeviceList(_ request: VoidData, callOptions: CallOptions?) -> UnaryCall<VoidData, DeviceListResponse>
+  func subscribeDeviceEvent(_ request: VoidData, callOptions: CallOptions?, handler: @escaping (SubscribeDeviceEventResponse) -> Void) -> ServerStreamingCall<VoidData, SubscribeDeviceEventResponse>
+  func unsubscribeDeviceEvent(_ request: VoidData, callOptions: CallOptions?) -> UnaryCall<VoidData, VoidData>
   func getDeviceName(_ request: DeviceNameRequest, callOptions: CallOptions?) -> UnaryCall<DeviceNameRequest, DeviceNameResponse>
   func publish(callOptions: CallOptions?) -> ClientStreamingCall<PublishRequest, PublishResponse>
   func subscribe(_ request: SubscribeRequest, callOptions: CallOptions?, handler: @escaping (SubscribeResponse) -> Void) -> ServerStreamingCall<SubscribeRequest, SubscribeResponse>
+  func captureSyslog(_ request: CaptureSyslogRequest, callOptions: CallOptions?, handler: @escaping (CaptureSyslogResponse) -> Void) -> ServerStreamingCall<CaptureSyslogRequest, CaptureSyslogResponse>
 }
 
 public final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceServiceService {
@@ -57,7 +58,7 @@ public final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceSer
   ///   - request: Request to send to GetDeviceList.
   ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getDeviceList(_ request: DeviceListRequest, callOptions: CallOptions? = nil) -> UnaryCall<DeviceListRequest, DeviceListResponse> {
+  public func getDeviceList(_ request: VoidData, callOptions: CallOptions? = nil) -> UnaryCall<VoidData, DeviceListResponse> {
     return self.makeUnaryCall(path: "/MobileDeviceService/GetDeviceList",
                               request: request,
                               callOptions: callOptions ?? self.defaultCallOptions)
@@ -70,7 +71,7 @@ public final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceSer
   ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
   ///   - handler: A closure called when each response is received from the server.
   /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
-  public func subscribeDeviceEvent(_ request: SubscribeDeviceEventRequest, callOptions: CallOptions? = nil, handler: @escaping (SubscribeDeviceEventResponse) -> Void) -> ServerStreamingCall<SubscribeDeviceEventRequest, SubscribeDeviceEventResponse> {
+  public func subscribeDeviceEvent(_ request: VoidData, callOptions: CallOptions? = nil, handler: @escaping (SubscribeDeviceEventResponse) -> Void) -> ServerStreamingCall<VoidData, SubscribeDeviceEventResponse> {
     return self.makeServerStreamingCall(path: "/MobileDeviceService/SubscribeDeviceEvent",
                                         request: request,
                                         callOptions: callOptions ?? self.defaultCallOptions,
@@ -83,7 +84,7 @@ public final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceSer
   ///   - request: Request to send to UnsubscribeDeviceEvent.
   ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func unsubscribeDeviceEvent(_ request: UnsubscribeDeviceEventRequest, callOptions: CallOptions? = nil) -> UnaryCall<UnsubscribeDeviceEventRequest, UnsubscribeDeviceEventResponse> {
+  public func unsubscribeDeviceEvent(_ request: VoidData, callOptions: CallOptions? = nil) -> UnaryCall<VoidData, VoidData> {
     return self.makeUnaryCall(path: "/MobileDeviceService/UnsubscribeDeviceEvent",
                               request: request,
                               callOptions: callOptions ?? self.defaultCallOptions)
@@ -128,16 +129,31 @@ public final class MobileDeviceServiceServiceClient: GRPCClient, MobileDeviceSer
                                         handler: handler)
   }
 
+  /// Asynchronous server-streaming call to CaptureSyslog.
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to CaptureSyslog.
+  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
+  ///   - handler: A closure called when each response is received from the server.
+  /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
+  public func captureSyslog(_ request: CaptureSyslogRequest, callOptions: CallOptions? = nil, handler: @escaping (CaptureSyslogResponse) -> Void) -> ServerStreamingCall<CaptureSyslogRequest, CaptureSyslogResponse> {
+    return self.makeServerStreamingCall(path: "/MobileDeviceService/CaptureSyslog",
+                                        request: request,
+                                        callOptions: callOptions ?? self.defaultCallOptions,
+                                        handler: handler)
+  }
+
 }
 
 /// To build a server, implement a class that conforms to this protocol.
 public protocol MobileDeviceServiceProvider: CallHandlerProvider {
-  func getDeviceList(request: DeviceListRequest, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceListResponse>
-  func subscribeDeviceEvent(request: SubscribeDeviceEventRequest, context: StreamingResponseCallContext<SubscribeDeviceEventResponse>) -> EventLoopFuture<GRPCStatus>
-  func unsubscribeDeviceEvent(request: UnsubscribeDeviceEventRequest, context: StatusOnlyCallContext) -> EventLoopFuture<UnsubscribeDeviceEventResponse>
+  func getDeviceList(request: VoidData, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceListResponse>
+  func subscribeDeviceEvent(request: VoidData, context: StreamingResponseCallContext<SubscribeDeviceEventResponse>) -> EventLoopFuture<GRPCStatus>
+  func unsubscribeDeviceEvent(request: VoidData, context: StatusOnlyCallContext) -> EventLoopFuture<VoidData>
   func getDeviceName(request: DeviceNameRequest, context: StatusOnlyCallContext) -> EventLoopFuture<DeviceNameResponse>
   func publish(context: UnaryResponseCallContext<PublishResponse>) -> EventLoopFuture<(StreamEvent<PublishRequest>) -> Void>
   func subscribe(request: SubscribeRequest, context: StreamingResponseCallContext<SubscribeResponse>) -> EventLoopFuture<GRPCStatus>
+  func captureSyslog(request: CaptureSyslogRequest, context: StreamingResponseCallContext<CaptureSyslogResponse>) -> EventLoopFuture<GRPCStatus>
 }
 
 extension MobileDeviceServiceProvider {
@@ -184,6 +200,13 @@ extension MobileDeviceServiceProvider {
       return ServerStreamingCallHandler(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.subscribe(request: request, context: context)
+        }
+      }
+
+    case "CaptureSyslog":
+      return ServerStreamingCallHandler(callHandlerContext: callHandlerContext) { context in
+        return { request in
+          self.captureSyslog(request: request, context: context)
         }
       }
 
